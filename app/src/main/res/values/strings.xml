@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Desafio DQR Tech</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="conversor_de_moedas">Conversor de Moedas</string>
+    <string name="de">De</string>
+    <string name="para">Para</string>
+    <string name="valor">Valor</string>
+    <string name="converter">Converter</string>
+    <string name="resultado">Resultado</string>
+    <string name="moedas">Moedas</string>
+    <string name="valor_convertido">Valor Convertido</string>
+    <string name="ordernar_por">Ordernar Por:</string>
+    <string name="nome">Nome</string>
+    <string name="c_digo">Código</string>
+</resources>
