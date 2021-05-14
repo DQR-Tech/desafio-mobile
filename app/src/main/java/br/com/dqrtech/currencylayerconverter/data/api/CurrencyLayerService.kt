@@ -1,11 +1,11 @@
-package br.com.dqrtech.currencylayerconverter.api
+package br.com.dqrtech.currencylayerconverter.data.api
 
 import br.com.dqrtech.currencylayerconverter.BuildConfig
-import br.com.dqrtech.currencylayerconverter.model.ConversionResponse
-import br.com.dqrtech.currencylayerconverter.model.CurrenciesResponse
+import br.com.dqrtech.currencylayerconverter.data.model.ConversionResponse
+import br.com.dqrtech.currencylayerconverter.data.model.CurrenciesResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import okhttp3.logging.HttpLoggingInterceptor.*
+import okhttp3.logging.HttpLoggingInterceptor.Level
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -15,7 +15,8 @@ interface CurrencyLayerService {
 
     @GET("/list")
     suspend fun getCurrencyList(
-        @Query("access_key") key: String = BuildConfig.CURRENCY_LAYER_ACCESS_KEY
+        @Query("access_key") key: String = BuildConfig.CURRENCY_LAYER_ACCESS_KEY,
+        @Query("format") format: String = "1"
     ) : CurrenciesResponse
 
     @GET("/live")
