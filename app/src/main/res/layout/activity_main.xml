@@ -25,14 +25,14 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/default_label_size"
                 android:padding="@dimen/default_padding"
-                android:text="From:" />
+                android:text="@string/label_from" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_from"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_margin"
-                android:text="_" />
+                android:text="@string/label_empty" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_from"
@@ -47,7 +47,7 @@
                 android:layout_width="145dp"
                 android:layout_height="44dp"
                 android:ems="10"
-                android:hint="value"
+                android:hint="@string/label_value"
                 android:inputType="numberDecimal"
                 android:padding="@dimen/default_padding"
                 android:textSize="@dimen/default_label_size" />
@@ -64,14 +64,14 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/default_label_size"
                 android:padding="@dimen/default_padding"
-                android:text="To:" />
+                android:text="@string/label_to" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_to"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/default_margin"
-                android:text="-" />
+                android:text="@string/label_empty" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_to"
@@ -98,7 +98,7 @@
         android:alpha="0.5"
         android:gravity="center_horizontal"
         android:padding="@dimen/default_padding"
-        android:text="powered by Currency Layer™"/>
+        android:text="@string/powered_by_currency_layer"/>
 
 
 </LinearLayout>
