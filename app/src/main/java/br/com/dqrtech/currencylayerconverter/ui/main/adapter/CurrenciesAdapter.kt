@@ -2,7 +2,6 @@ package br.com.dqrtech.currencylayerconverter.ui.main.adapter
 
 import android.app.Activity
 import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +13,7 @@ import kotlinx.android.synthetic.main.item_layout.view.*
 class CurrenciesAdapter (private val currencies: LinkedHashMap<String, String>) : RecyclerView.Adapter<DataViewHolder>() {
 
     lateinit var currencyAbbreviation : String
+    lateinit var currency : String
 
     class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(currencyAbbreviation: String, currenctName: String) {
@@ -30,7 +30,11 @@ class CurrenciesAdapter (private val currencies: LinkedHashMap<String, String>) 
         holder.bind(ArrayList<String>(currencies.keys).get(position), ArrayList<String>(currencies.values).get(position))
         holder.itemView.setOnClickListener {
             currencyAbbreviation = ArrayList<String>(currencies.keys).get(position)
-            (holder.itemView.context as Activity).setResult(Activity.RESULT_OK, Intent().putExtra("abbreviation", currencyAbbreviation))
+            currency = ArrayList<String>(currencies.values).get(position)
+            (holder.itemView.context as Activity).setResult(Activity.RESULT_OK, Intent()
+                .putExtra("abbreviation", currencyAbbreviation)
+                .putExtra("currency", currency)
+            )
             (holder.itemView.context as Activity).finish()
         }
     }
