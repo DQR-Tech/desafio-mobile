@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -45,6 +46,17 @@ class CurrenciesActivity : AppCompatActivity() {
             )
         )
         recyclerView.adapter = adapter
+        sv_search_currency.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter.filter(newText)
+                return false
+            }
+
+        })
     }
 
     private fun setupObservers() {
@@ -53,17 +65,20 @@ class CurrenciesActivity : AppCompatActivity() {
                 when (resource.status) {
                     Status.SUCCESS -> {
                         recyclerView.visibility = View.VISIBLE
+                        sv_search_currency.visibility = View.VISIBLE
                         progressBar.visibility = View.GONE
                         resource.data?.let { retrieveList(it.currencies!!) }
                     }
                     Status.ERROR -> {
                         recyclerView.visibility = View.VISIBLE
+                        sv_search_currency.visibility = View.VISIBLE
                         progressBar.visibility = View.GONE
                         Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                     }
                     Status.LOADING -> {
                         progressBar.visibility = View.VISIBLE
                         recyclerView.visibility = View.GONE
+                        sv_search_currency.visibility = View.GONE
                     }
                 }
             }
