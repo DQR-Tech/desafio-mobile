@@ -1,2 +1,6 @@
-# Will be created by macOS to store folder properties, irrelevant to project
+# MacOS
 .DS_Store
+
+# xCode
+xcuserdata/
+DerivedData
