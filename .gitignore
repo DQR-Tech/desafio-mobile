@@ -2,5 +2,9 @@
 .DS_Store
 
 # xCode
+*.xcuserstate
+UserInterfaceState.xcuserstate
+project.xcworkspace/
 xcuserdata/
+UserInterface.xcuserstate
 DerivedData
