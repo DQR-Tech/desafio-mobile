@@ -1,0 +1,10 @@
+/* 
+  Localizeble.strings
+  CurrencyConverter
+
+  Created by Lucas Werner Kuipers on 02/07/21.
+  
+*/
+
+"scenes.conversion.title" = "Convert";
+"scenes.selection.title" = "Select";
