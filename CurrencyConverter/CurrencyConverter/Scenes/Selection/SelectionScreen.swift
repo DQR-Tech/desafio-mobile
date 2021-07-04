@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SelectionScreen: UIView {
+final class SelectionScreen: UIView {
     
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
@@ -23,7 +23,7 @@ class SelectionScreen: UIView {
 extension SelectionScreen: ParentCodeView {
     
     func setupView() {
-        backgroundColor = .white
+        backgroundColor = .systemBackground
     }
     
     func addSubviews() {

@@ -7,15 +7,17 @@
 
 import UIKit
 
-class SelectionViewController: CurrencyConverterViewController {
+final class SelectionViewController: CurrencyConverterViewController {
 
     let screen = SelectionScreen()
-    var unitSelectionButtonPosition: UnitSelectionButtonPosition? = nil
+    let unitIndex: Int
+    var newUnit: String?
     
-    init(for unitSelectionButtonPosition: UnitSelectionButtonPosition) {
+    init(for unitIndex: Int) {
+        self.unitIndex = unitIndex
+    
         super.init()
-        self.unitSelectionButtonPosition = unitSelectionButtonPosition
-        sceneTitle = "Selection"
+        super.sceneTitle = "Selection"
     }
     
     required init?(coder: NSCoder) {

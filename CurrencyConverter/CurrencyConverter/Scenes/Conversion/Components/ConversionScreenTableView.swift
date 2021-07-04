@@ -12,7 +12,7 @@ final class ConversionScreen: UIView {
     lazy var unitsConversionTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(ConversionScreenUnitsTableViewCell.self, forCellReuseIdentifier: ConversionScreenUnitsTableViewCell.identifier)
+        tableView.register(ConversionScreenTableViewCell.self, forCellReuseIdentifier: ConversionScreenTableViewCell.identifier)
         tableView.tableFooterView = UIView()
         return tableView
     }()

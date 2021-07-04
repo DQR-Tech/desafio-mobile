@@ -7,9 +7,11 @@
 
 import UIKit
 
-class ConversionViewController: CurrencyConverterViewController {
-        
+final class ConversionViewController: CurrencyConverterViewController {
+            
     let screen = ConversionScreen()
+    
+    // MARK: - Life Cycle
     
     override init() {
         super.init()
@@ -29,20 +31,28 @@ class ConversionViewController: CurrencyConverterViewController {
         setupDelegates()
         setupUI()
     }
-        
+            
     func setupUI() {
         title = Scenes.Conversion.title
     }
     
     func setupDelegates() {
-        screen.delegate = self
+        screen.unitsConversionTableView.dataSource = self
+        screen.unitsConversionTableView.delegate = self
     }
 }
 
-extension ConversionViewController: ConversionScreenDelegate {
-    func unitSelectionButtonPressed(for buttonPosition: UnitSelectionButtonPosition) {
-        print("\(buttonPosition.rawValue) Unit Selection Button Pressed")
-        let vc = SelectionViewController(for: buttonPosition)
-        navigationController?.pushViewController(vc, animated: true)
+extension ConversionViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ConversionScreenUnitsTableViewCell.identifier) as! ConversionScreenUnitsTableViewCell
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 }
