@@ -23,7 +23,7 @@ class SelectionScreen: UIView {
 extension SelectionScreen: ParentCodeView {
     
     func setupView() {
-        self.backgroundColor = .blue
+        backgroundColor = .white
     }
     
     func addSubviews() {

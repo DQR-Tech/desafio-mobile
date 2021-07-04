@@ -7,28 +7,42 @@
 
 import UIKit
 
-class ConversionViewController: UIViewController {
-    
+class ConversionViewController: CurrencyConverterViewController {
+        
     let screen = ConversionScreen()
-    var originUnit = CurrencyUnit(name: "Dólar", id: "USD", rate: 1)
-    var targetUnit = CurrencyUnit(name: "Real", id: "BRL", rate: 5.04)
+    
+    override init() {
+        super.init()
+        sceneTitle = "Conversion"
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         self.view = screen
-
-        screen.delegate = self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupDelegates()
+        setupUI()
+    }
         
+    func setupUI() {
         title = Scenes.Conversion.title
+    }
+    
+    func setupDelegates() {
+        screen.delegate = self
     }
 }
 
 extension ConversionViewController: ConversionScreenDelegate {
-    func buttonPressed() {
-        let viewController = SelectionViewController()
-        navigationController?.pushViewController(viewController, animated: true)
+    func unitSelectionButtonPressed(for buttonPosition: UnitSelectionButtonPosition) {
+        print("\(buttonPosition.rawValue) Unit Selection Button Pressed")
+        let vc = SelectionViewController(for: buttonPosition)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

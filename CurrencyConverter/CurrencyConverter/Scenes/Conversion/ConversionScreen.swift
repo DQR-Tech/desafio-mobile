@@ -11,28 +11,23 @@ class ConversionScreen: UIView {
     
     var delegate: ConversionScreenDelegate?
     
-    lazy var originUnitButton: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .green
-        button.setTitle("Select Origin Unit", for: .normal)
-        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-        return button
-    }()
+    let topUnitSelectionButton = UnitSelectionButton(position: .top)
+    let bottomUnitSelectionButton = UnitSelectionButton(position: .bottom)
         
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
         setupSubviews()
         setupView()
+        setupDelegates()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc
-    func buttonPressed() {
-        self.delegate?.buttonPressed()
+    func setupDelegates() {
+        topUnitSelectionButton.delegate = self
+        bottomUnitSelectionButton.delegate = self
     }
 }
 
@@ -43,18 +38,37 @@ extension ConversionScreen: ParentCodeView {
     }
     
     func addSubviews() {
-        addSubview(originUnitButton)
+        addSubview(topUnitSelectionButton)
+        addSubview(bottomUnitSelectionButton)
     }
     
     func setupConstraints() {
-        originUnitButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50).isActive = true
-        originUnitButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50).isActive = true
-        originUnitButton.topAnchor.constraint(equalTo: topAnchor, constant: 100).isActive = true
-        originUnitButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -100).isActive = true
-        
+        setupTopUnitSelectionButtonConstraints()
+        setupBottomUnitSelectionButtonConstraints()
+    }
+    
+    func setupTopUnitSelectionButtonConstraints() {
+        topUnitSelectionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50).isActive = true
+        topUnitSelectionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50).isActive = true
+        topUnitSelectionButton.topAnchor.constraint(equalTo: topAnchor, constant: 100).isActive = true
+        topUnitSelectionButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
+    }
+    
+    func setupBottomUnitSelectionButtonConstraints() {
+        bottomUnitSelectionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50).isActive = true
+        bottomUnitSelectionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50).isActive = true
+        bottomUnitSelectionButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -100).isActive = true
+        bottomUnitSelectionButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
+    }
+}
+
+extension ConversionScreen: UnitSelectionButtonDelegate {
+    
+    func unitSelectionButtonPressed(for buttonPosition: UnitSelectionButtonPosition) {
+        delegate?.unitSelectionButtonPressed(for: buttonPosition)
     }
 }
 
 protocol ConversionScreenDelegate {
-    func buttonPressed()
+    func unitSelectionButtonPressed(for buttonPosition: UnitSelectionButtonPosition)
 }

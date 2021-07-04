@@ -7,9 +7,20 @@
 
 import UIKit
 
-class SelectionViewController: UIViewController {
+class SelectionViewController: CurrencyConverterViewController {
 
     let screen = SelectionScreen()
+    var unitSelectionButtonPosition: UnitSelectionButtonPosition? = nil
+    
+    init(for unitSelectionButtonPosition: UnitSelectionButtonPosition) {
+        super.init()
+        self.unitSelectionButtonPosition = unitSelectionButtonPosition
+        sceneTitle = "Selection"
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         self.view = screen
@@ -17,6 +28,11 @@ class SelectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.sceneTitle = "Selection"
+        setupUI()
+    }
+    
+    func setupUI() {
         title = Scenes.Selection.title
     }
 }
