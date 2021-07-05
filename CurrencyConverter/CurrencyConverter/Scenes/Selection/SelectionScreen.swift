@@ -9,6 +9,9 @@ import UIKit
 
 final class SelectionScreen: UIView {
     
+    let unitSearchBar = UnitSearchBar()
+    let availableUnitsTableView = AvailableUnitsTableView()
+    
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
         setupSubviews()
@@ -27,8 +30,18 @@ extension SelectionScreen: ParentCodeView {
     }
     
     func addSubviews() {
+        addSubview(unitSearchBar)
+        addSubview(availableUnitsTableView)
     }
     
     func setupConstraints() {
+        unitSearchBar.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        unitSearchBar.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        unitSearchBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
+        
+        availableUnitsTableView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        availableUnitsTableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        availableUnitsTableView.topAnchor.constraint(equalTo: unitSearchBar.bottomAnchor).isActive = true
+        availableUnitsTableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
 }

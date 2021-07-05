@@ -8,10 +8,10 @@
 import UIKit
 
 final class ConversionViewController: CurrencyConverterViewController {
-                    
+
     var globalAmountInDollars: Double = 1.00
     let screen = ConversionScreen()
-    let units = [
+    var units = [
         "USD",
         "BRL"
     ]
@@ -67,7 +67,8 @@ extension ConversionViewController: UITableViewDataSource, UITableViewDelegate {
         cell.position = position
         
         cell.delegate = self
-        
+        cell.unitButton.backgroundColor = .systemGreen
+        cell.unitButton.setTitleColor(.systemBackground, for: .normal)
         return cell
     }
     
@@ -80,6 +81,12 @@ extension ConversionViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension ConversionViewController: UnitsConversionTableViewCellDelegate {
+    func unitButtonPressed(on cellPosition: Int) {
+        let vc = SelectionViewController(for: cellPosition)
+        vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func amountDidChange(on cellPosition: Int, to amountInDollars: Double) {
         print("VIEW CONTROLLER: cellPosition: \(cellPosition) and amount in dollars: \(amountInDollars)")
         self.globalAmountInDollars = amountInDollars
@@ -89,5 +96,13 @@ extension ConversionViewController: UnitsConversionTableViewCellDelegate {
         print(tableViewIndexesToReload)
         
         screen.unitsConversionTableView.reloadRows(at: tableViewIndexesToReload, with: .none)
+    }
+    
+}
+
+extension ConversionViewController: SelectionViewControllerDelegate {
+    func updateUnit(at position: Int, to newUnitID: String) {
+        units[position] = newUnitID
+        screen.unitsConversionTableView.reloadData()
     }
 }

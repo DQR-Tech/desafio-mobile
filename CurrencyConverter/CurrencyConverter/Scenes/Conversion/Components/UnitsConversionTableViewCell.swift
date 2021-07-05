@@ -78,9 +78,8 @@ extension UnitsConversionTableViewCell: ParentCodeView {
 
 extension UnitsConversionTableViewCell: UnitButtonDelegate {
     func unitButtonPressed() {
-        if position != nil {
-            print("Cell of position: \(position!) pressed!")
-        }
+        guard let position = position else { return }
+        self.delegate?.unitButtonPressed(on: position)
     }
 }
 
@@ -104,4 +103,5 @@ extension UnitsConversionTableViewCell: UITextFieldDelegate {
 
 protocol UnitsConversionTableViewCellDelegate {
     func amountDidChange(on cellPosition: Int, to amountInDollars: Double)
+    func unitButtonPressed(on cellPosition: Int)
 }
