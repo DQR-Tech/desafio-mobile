@@ -19,7 +19,6 @@
 		A81269C72692D3CE00E224D1 /* UnitSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81269C62692D3CE00E224D1 /* UnitSearchBar.swift */; };
 		A81269C82692D3CE00E224D1 /* UnitSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81269C62692D3CE00E224D1 /* UnitSearchBar.swift */; };
 		A81269C92692D3CE00E224D1 /* UnitSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81269C62692D3CE00E224D1 /* UnitSearchBar.swift */; };
-		A8734AD62691471100D25DE5 /* UnitSelectionButtonOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8734AD52691471100D25DE5 /* UnitSelectionButtonOld.swift */; };
 		A8734AF126916E3500D25DE5 /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8734AF026916E3500D25DE5 /* CurrencyConverterViewController.swift */; };
 		A8734AF226916E3500D25DE5 /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8734AF026916E3500D25DE5 /* CurrencyConverterViewController.swift */; };
 		A8A9B6B2269210FA003A602F /* ConversionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9B6B1269210FA003A602F /* ConversionScreen.swift */; };
@@ -34,10 +33,8 @@
 		A8A9B6DC26923C7B003A602F /* AmountTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9B6DB26923C7B003A602F /* AmountTextField.swift */; };
 		A8A9B6DD26923C7B003A602F /* AmountTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9B6DB26923C7B003A602F /* AmountTextField.swift */; };
 		A8A9B6DE26923C7B003A602F /* AmountTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9B6DB26923C7B003A602F /* AmountTextField.swift */; };
-		A8C1E08126917B95001DE65C /* UnitSelectionButtonOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8734AD52691471100D25DE5 /* UnitSelectionButtonOld.swift */; };
 		A8C1E08F26917C22001DE65C /* CurrencyConverter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8FFBCCC268F572200CA8247 /* CurrencyConverter.xcdatamodeld */; };
 		A8C1E09026917C22001DE65C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FFBCC3268F572200CA8247 /* AppDelegate.swift */; };
-		A8C1E09126917C22001DE65C /* ConversionScreenOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F84072268FCC710043F9F8 /* ConversionScreenOld.swift */; };
 		A8C1E09226917C22001DE65C /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F840B4268FDA020043F9F8 /* AppConstants.swift */; };
 		A8C1E09326917C22001DE65C /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F840EB268FE6E50043F9F8 /* SelectionViewController.swift */; };
 		A8C1E09426917C22001DE65C /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F84079268FCD380043F9F8 /* CodeView.swift */; };
@@ -46,19 +43,13 @@
 		A8C1E09726917C22001DE65C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FFBCC5268F572200CA8247 /* SceneDelegate.swift */; };
 		A8C1E09826917C22001DE65C /* SelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F840F1268FE6FF0043F9F8 /* SelectionScreen.swift */; };
 		A8C1E09926917C22001DE65C /* ConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8405A268FC1F90043F9F8 /* ConversionViewController.swift */; };
-		A8C1E09A26917C22001DE65C /* UnitSelectionButtonOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8734AD52691471100D25DE5 /* UnitSelectionButtonOld.swift */; };
 		A8C1E09B26917C22001DE65C /* CurrencyUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8410426901BBC0043F9F8 /* CurrencyUnit.swift */; };
 		A8C1E09E26917C22001DE65C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A8F8409C268FD80A0043F9F8 /* Localizable.strings */; };
 		A8C1E09F26917C22001DE65C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8FFBCD1268F572200CA8247 /* LaunchScreen.storyboard */; };
 		A8C1E0A026917C22001DE65C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8FFBCCF268F572200CA8247 /* Assets.xcassets */; };
 		A8C1E0B326917CEA001DE65C /* CurrencyConverterViewController+Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C1E0B226917CEA001DE65C /* CurrencyConverterViewController+Debugging.swift */; };
-		A8C1E0C5269184FC001DE65C /* CurrencyAmountTextFieldOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C1E0C4269184FC001DE65C /* CurrencyAmountTextFieldOld.swift */; };
-		A8C1E0C6269184FC001DE65C /* CurrencyAmountTextFieldOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C1E0C4269184FC001DE65C /* CurrencyAmountTextFieldOld.swift */; };
-		A8C1E0C7269184FC001DE65C /* CurrencyAmountTextFieldOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C1E0C4269184FC001DE65C /* CurrencyAmountTextFieldOld.swift */; };
 		A8F8405B268FC1F90043F9F8 /* ConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8405A268FC1F90043F9F8 /* ConversionViewController.swift */; };
 		A8F8405C268FC1F90043F9F8 /* ConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8405A268FC1F90043F9F8 /* ConversionViewController.swift */; };
-		A8F84073268FCC710043F9F8 /* ConversionScreenOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F84072268FCC710043F9F8 /* ConversionScreenOld.swift */; };
-		A8F84074268FCC710043F9F8 /* ConversionScreenOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F84072268FCC710043F9F8 /* ConversionScreenOld.swift */; };
 		A8F8407A268FCD380043F9F8 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F84079268FCD380043F9F8 /* CodeView.swift */; };
 		A8F8407B268FCD380043F9F8 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F84079268FCD380043F9F8 /* CodeView.swift */; };
 		A8F84083268FCD7C0043F9F8 /* ParentCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F84082268FCD7C0043F9F8 /* ParentCodeView.swift */; };
@@ -104,7 +95,6 @@
 		A81269B12692D14100E224D1 /* AvailableUnitsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableUnitsTableView.swift; sourceTree = "<group>"; };
 		A81269B92692D18200E224D1 /* AvailableUnitsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableUnitsTableViewCell.swift; sourceTree = "<group>"; };
 		A81269C62692D3CE00E224D1 /* UnitSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitSearchBar.swift; sourceTree = "<group>"; };
-		A8734AD52691471100D25DE5 /* UnitSelectionButtonOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitSelectionButtonOld.swift; sourceTree = "<group>"; };
 		A8734AF026916E3500D25DE5 /* CurrencyConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewController.swift; sourceTree = "<group>"; };
 		A8A9B6B1269210FA003A602F /* ConversionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionScreen.swift; sourceTree = "<group>"; };
 		A8A9B6CB269212C8003A602F /* UnitsConversionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsConversionTableViewCell.swift; sourceTree = "<group>"; };
@@ -113,9 +103,7 @@
 		A8C1E0A426917C22001DE65C /* CurrencyConverterDebugging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConverterDebugging.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8C1E0A926917C22001DE65C /* CurrencyConverter copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CurrencyConverter copy-Info.plist"; path = "/Users/lucasmac/desafio-mobile/CurrencyConverter/CurrencyConverter copy-Info.plist"; sourceTree = "<absolute>"; };
 		A8C1E0B226917CEA001DE65C /* CurrencyConverterViewController+Debugging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyConverterViewController+Debugging.swift"; sourceTree = "<group>"; };
-		A8C1E0C4269184FC001DE65C /* CurrencyAmountTextFieldOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAmountTextFieldOld.swift; sourceTree = "<group>"; };
 		A8F8405A268FC1F90043F9F8 /* ConversionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionViewController.swift; sourceTree = "<group>"; };
-		A8F84072268FCC710043F9F8 /* ConversionScreenOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionScreenOld.swift; sourceTree = "<group>"; };
 		A8F84079268FCD380043F9F8 /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		A8F84082268FCD7C0043F9F8 /* ParentCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCodeView.swift; sourceTree = "<group>"; };
 		A8F8408F268FD79B0043F9F8 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -182,15 +170,6 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		A8734AD4269146EF00D25DE5 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				A8734AD52691471100D25DE5 /* UnitSelectionButtonOld.swift */,
-				A8C1E0C4269184FC001DE65C /* CurrencyAmountTextFieldOld.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
 		A8734AE626916C9300D25DE5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,15 +189,6 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		A8A9B6C226921270003A602F /* ScrollView(Old) */ = {
-			isa = PBXGroup;
-			children = (
-				A8734AD4269146EF00D25DE5 /* Components */,
-				A8F84072268FCC710043F9F8 /* ConversionScreenOld.swift */,
-			);
-			path = "ScrollView(Old)";
-			sourceTree = "<group>";
-		};
 		A8C1E0412691760F001DE65C /* Commons */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,16 +196,8 @@
 				A8F840B3268FD9E00043F9F8 /* Constants */,
 				A8F84078268FCD1C0043F9F8 /* Protocols */,
 				A8734AE626916C9300D25DE5 /* Extensions */,
-				A8C1E0422691766E001DE65C /* Helper */,
 			);
 			path = Commons;
-			sourceTree = "<group>";
-		};
-		A8C1E0422691766E001DE65C /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helper;
 			sourceTree = "<group>";
 		};
 		A8F8403D268FA2570043F9F8 /* Selection */ = {
@@ -246,13 +208,6 @@
 				A81269C12692D1CC00E224D1 /* Components */,
 			);
 			path = Selection;
-			sourceTree = "<group>";
-		};
-		A8F84056268FB7040043F9F8 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		A8F84078268FCD1C0043F9F8 /* Protocols */ = {
@@ -323,7 +278,6 @@
 			isa = PBXGroup;
 			children = (
 				A8FFBD02268F5A3300CA8247 /* Application */,
-				A8F84056268FB7040043F9F8 /* Network */,
 				A8C1E0412691760F001DE65C /* Commons */,
 				A8FFBD03268F5A5B00CA8247 /* Scenes */,
 			);
@@ -377,7 +331,6 @@
 				A8F8405A268FC1F90043F9F8 /* ConversionViewController.swift */,
 				A8A9B6B1269210FA003A602F /* ConversionScreen.swift */,
 				A8A9B6C12692126A003A602F /* Components */,
-				A8A9B6C226921270003A602F /* ScrollView(Old) */,
 			);
 			path = Conversion;
 			sourceTree = "<group>";
@@ -545,7 +498,6 @@
 				A81269C92692D3CE00E224D1 /* UnitSearchBar.swift in Sources */,
 				A8C1E08F26917C22001DE65C /* CurrencyConverter.xcdatamodeld in Sources */,
 				A8C1E09026917C22001DE65C /* AppDelegate.swift in Sources */,
-				A8C1E09126917C22001DE65C /* ConversionScreenOld.swift in Sources */,
 				A81269BC2692D18200E224D1 /* AvailableUnitsTableViewCell.swift in Sources */,
 				A8A9B6D626922FAD003A602F /* UnitButton.swift in Sources */,
 				A8C1E09226917C22001DE65C /* AppConstants.swift in Sources */,
@@ -554,12 +506,10 @@
 				A8A9B6B726921106003A602F /* ConversionScreen.swift in Sources */,
 				A8C1E09526917C22001DE65C /* CurrencyConverterViewController.swift in Sources */,
 				A8C1E0B326917CEA001DE65C /* CurrencyConverterViewController+Debugging.swift in Sources */,
-				A8C1E0C7269184FC001DE65C /* CurrencyAmountTextFieldOld.swift in Sources */,
 				A8C1E09626917C22001DE65C /* ParentCodeView.swift in Sources */,
 				A8C1E09726917C22001DE65C /* SceneDelegate.swift in Sources */,
 				A8C1E09826917C22001DE65C /* SelectionScreen.swift in Sources */,
 				A8C1E09926917C22001DE65C /* ConversionViewController.swift in Sources */,
-				A8C1E09A26917C22001DE65C /* UnitSelectionButtonOld.swift in Sources */,
 				A8C1E09B26917C22001DE65C /* CurrencyUnit.swift in Sources */,
 				A812697926927FE300E224D1 /* UnitsConversionTableView.swift in Sources */,
 				A81269B42692D14100E224D1 /* AvailableUnitsTableView.swift in Sources */,
@@ -574,10 +524,8 @@
 			files = (
 				A8A9B6D426922FAD003A602F /* UnitButton.swift in Sources */,
 				A812697726927FE300E224D1 /* UnitsConversionTableView.swift in Sources */,
-				A8C1E0C5269184FC001DE65C /* CurrencyAmountTextFieldOld.swift in Sources */,
 				A8FFBCCE268F572200CA8247 /* CurrencyConverter.xcdatamodeld in Sources */,
 				A8FFBCC4268F572200CA8247 /* AppDelegate.swift in Sources */,
-				A8F84073268FCC710043F9F8 /* ConversionScreenOld.swift in Sources */,
 				A8F840B5268FDA020043F9F8 /* AppConstants.swift in Sources */,
 				A8F840EC268FE6E50043F9F8 /* SelectionViewController.swift in Sources */,
 				A8F8407A268FCD380043F9F8 /* CodeView.swift in Sources */,
@@ -587,7 +535,6 @@
 				A8FFBCC6268F572200CA8247 /* SceneDelegate.swift in Sources */,
 				A8F840F2268FE6FF0043F9F8 /* SelectionScreen.swift in Sources */,
 				A8F8405B268FC1F90043F9F8 /* ConversionViewController.swift in Sources */,
-				A8734AD62691471100D25DE5 /* UnitSelectionButtonOld.swift in Sources */,
 				A8F8410526901BBC0043F9F8 /* CurrencyUnit.swift in Sources */,
 				A8A9B6B2269210FA003A602F /* ConversionScreen.swift in Sources */,
 				A8A9B6CC269212C8003A602F /* UnitsConversionTableViewCell.swift in Sources */,
@@ -608,13 +555,10 @@
 				A8F84084268FCD7C0043F9F8 /* ParentCodeView.swift in Sources */,
 				A81269C82692D3CE00E224D1 /* UnitSearchBar.swift in Sources */,
 				A8734AF226916E3500D25DE5 /* CurrencyConverterViewController.swift in Sources */,
-				A8F84074268FCC710043F9F8 /* ConversionScreenOld.swift in Sources */,
 				A812697826927FE300E224D1 /* UnitsConversionTableView.swift in Sources */,
 				A8A9B6CD269212C8003A602F /* UnitsConversionTableViewCell.swift in Sources */,
 				A8F8405C268FC1F90043F9F8 /* ConversionViewController.swift in Sources */,
-				A8C1E08126917B95001DE65C /* UnitSelectionButtonOld.swift in Sources */,
 				A8F8410626901BBC0043F9F8 /* CurrencyUnit.swift in Sources */,
-				A8C1E0C6269184FC001DE65C /* CurrencyAmountTextFieldOld.swift in Sources */,
 				A81269BB2692D18200E224D1 /* AvailableUnitsTableViewCell.swift in Sources */,
 				A8F8407B268FCD380043F9F8 /* CodeView.swift in Sources */,
 				A8F840F3268FE6FF0043F9F8 /* SelectionScreen.swift in Sources */,
