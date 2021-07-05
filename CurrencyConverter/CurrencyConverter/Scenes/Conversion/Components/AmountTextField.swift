@@ -10,7 +10,11 @@ import UIKit
 class AmountTextField: UITextField {
         
     // MARK: - Properties
-    
+    var amount: Double? {
+        didSet {
+            text  = Decimal(amount!).currency
+        }
+    }
     var decimal: Decimal { string.decimal / pow(10, Formatter.currency.maximumFractionDigits) }
     var maximum: Decimal = 999_999_999_999.99
     private var lastValue: String?
@@ -32,8 +36,6 @@ class AmountTextField: UITextField {
         translatesAutoresizingMaskIntoConstraints = false
         self.addPadding(.both(20))
     }
-    
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

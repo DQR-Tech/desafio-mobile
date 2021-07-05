@@ -9,18 +9,14 @@ import UIKit
 
 final class ConversionScreen: UIView {
     
-    lazy var unitsConversionTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(ConversionScreenUnitsTableViewCell.self, forCellReuseIdentifier: ConversionScreenUnitsTableViewCell.identifier)
-        tableView.tableFooterView = UIView()
-        return tableView
-    }()
+    let unitsConversionTableView = UnitsConversionTableView()
         
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
         setupSubviews()
         setupView()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIView.endEditing(_:)))
+        addGestureRecognizer(tap)
     }
     
     required init?(coder: NSCoder) {
