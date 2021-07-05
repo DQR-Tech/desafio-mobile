@@ -17,7 +17,7 @@ struct Scenes {
 }
 
 struct Currency {
-    static let conversionRates = [
+    static var conversionRates = [
         "USD": 1,
         "BRL": 5.04,
         "AUD": 1.340245,
@@ -25,7 +25,7 @@ struct Currency {
         "CAD": 1.243835,
         "CHF": 0.92613
     ]
-    static let availableUnits = [
+    static var availableUnits = [
         "USD": "Dollar",
         "BRL": "Brazilian Real",
         "AUD": "Australian Dollar",
