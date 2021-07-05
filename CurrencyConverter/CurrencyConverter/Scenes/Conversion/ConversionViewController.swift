@@ -8,7 +8,7 @@
 import UIKit
 
 final class ConversionViewController: CurrencyConverterViewController {
-
+    
     var globalAmountInDollars: Double = 1.00
     let screen = ConversionScreen()
     var units = [
@@ -35,6 +35,11 @@ final class ConversionViewController: CurrencyConverterViewController {
         super.viewDidLoad()
         setupDelegates()
         setupUI()
+        screen.unitsConversionTableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        screen.unitsConversionTableView.reloadData()
     }
             
     func setupUI() {

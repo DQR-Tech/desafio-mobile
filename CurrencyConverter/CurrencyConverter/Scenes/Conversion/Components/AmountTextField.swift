@@ -34,6 +34,10 @@ class AmountTextField: UITextField {
         layer.borderColor = UIColor.systemGreen.withAlphaComponent(0.4).cgColor
         backgroundColor = UIColor.systemGreen.withAlphaComponent(0.4)
         translatesAutoresizingMaskIntoConstraints = false
+        adjustsFontSizeToFitWidth = true
+        minimumFontSize = 10
+        font = UIFont.boldSystemFont(ofSize: 32)
+        textAlignment = .center
         self.addPadding(.both(20))
     }
     
