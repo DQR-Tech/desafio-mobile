@@ -93,12 +93,9 @@ extension ConversionViewController: UnitsConversionTableViewCellDelegate {
     }
     
     func amountDidChange(on cellPosition: Int, to amountInDollars: Double) {
-        print("VIEW CONTROLLER: cellPosition: \(cellPosition) and amount in dollars: \(amountInDollars)")
         self.globalAmountInDollars = amountInDollars
-        
         let tableViewIndexes = [Int](0..<units.count).map{IndexPath(row: $0, section: 0)}
         let tableViewIndexesToReload = tableViewIndexes.filter {$0.row != cellPosition}
-        print(tableViewIndexesToReload)
         
         screen.unitsConversionTableView.reloadRows(at: tableViewIndexesToReload, with: .none)
     }

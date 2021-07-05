@@ -16,9 +16,7 @@ final class SelectionViewController: CurrencyConverterViewController {
     var newUnit: String?
     
     init(for unitIndex: Int) {
-        self.unitIndex = unitIndex
-        print(self.unitIndex)
-    
+        self.unitIndex = unitIndex    
         super.init()
         super.sceneTitle = "Selection"
     }

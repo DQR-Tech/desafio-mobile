@@ -96,12 +96,7 @@ extension UnitsConversionTableViewCell: UITextFieldDelegate {
         guard let originUnit = unit else { return }
         guard let originRate = Currency.conversionRates[originUnit] else { return }
         guard let position = position else { return }
-        
-        print("Origin amount: \(originAmount) of unit \(originUnit) in cell position: \(position)")
         let dollarAmount = originAmount / originRate
-        
-        print("Amount given in dollars: \(dollarAmount)")
-        
         self.delegate?.amountDidChange(on: position, to: dollarAmount)
     }
 }
