@@ -13,7 +13,8 @@ extension Double {
 
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US")
-        dateFormatter.dateStyle = .medium
+        dateFormatter.dateStyle = .full
+        dateFormatter.timeStyle = .full
 
         return dateFormatter.string(from: date)
     }

@@ -59,6 +59,8 @@ final class ConversionViewController: CurrencyConverterViewController {
         Provider.getLatestQuotes(completion: { (quotesResults) in
             self.conversionRates = quotesResults.latestConversionRates
             Currency.conversionRates = quotesResults.latestConversionRates
+            Currency.latestUpdateTimestamp = quotesResults.latestTimestamp
+            print(quotesResults.latestTimestamp)
         })
     }
             
@@ -81,26 +83,13 @@ extension ConversionViewController: UITableViewDataSource, UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: UnitsConversionTableViewCell.identifier) as! UnitsConversionTableViewCell
         let position = indexPath.row
-        
         let unit = units[position]
-        
         guard let conversionRate = conversionRates[unit] else { return cell}
         let amountConverted = globalAmountInDollars * conversionRate
         
         cell.unit = unit
-    
         cell.amount = amountConverted
         cell.position = position
-
-//        let unitSymbol = getSymbolForCurrencyCode(code: unit)
-//        let newLocale = locale(from: unit)
-//        print(unitSymbol)
-//        print(newLocale.currencyCode)
-//        cell.amountTextField.locale = newLocale
-//        print(cell.amountTextField.locale?.currencyCode)
-//        print(cell.amountTextField.locale?.currencySymbol)
-//        cell.amountTextField.locale = Locale(identifier: "en_US")
-        
         cell.delegate = self
         cell.unitButton.backgroundColor = .systemGreen
         cell.unitButton.setTitleColor(.systemBackground, for: .normal)
@@ -114,7 +103,9 @@ extension ConversionViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "Last update: 06/06/2021 01:40:24"
+        let timestamp = Currency.latestUpdateTimestamp
+        let date = Double(timestamp).getDateStringFromUTC()
+        label.text = "Last update: \(date)"
         label.textColor = .gray
         label.font = .systemFont(ofSize: 12)
         label.textAlignment = .center
