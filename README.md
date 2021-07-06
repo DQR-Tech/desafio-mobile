@@ -47,6 +47,7 @@ Para fazer uma conversão entre quaisquer outras duas moedas, será necessário 
 -   [X] Edição em ambos campos (dois text fields que ao editados convertem em tempo real um ao outro)
 -   [X] Todo o aplicativo em view code (baseado em protocolos)
 -   [X] Suporte para português e inglês (Localizable.strings)
+-   [ ] Símbolo da unidade de moeda no text field
 -   [ ] App design (icon, color palette)
 -   [ ] Launch Screen animation
 -   [ ] Acessibilidade
