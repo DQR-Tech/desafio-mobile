@@ -55,6 +55,5 @@ extension AvailableUnitsTableViewCell: ParentCodeView {
     }
     
     func setupView() {
-        
     }
 }

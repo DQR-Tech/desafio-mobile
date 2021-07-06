@@ -15,14 +15,25 @@ class UnitButton: UIButton {
         }
     }
     
+    override var isHighlighted: Bool {
+        didSet {
+            if isHighlighted {
+                UIView.animate(withDuration: 0.3) {
+                    self.backgroundColor = UIColor.systemGreen.withAlphaComponent(0.4)
+                }
+            } else {
+                UIView.animate(withDuration: 0.3) {
+                    self.backgroundColor = UIColor.systemGreen.withAlphaComponent(1)
+                }
+            }
+        }
+    }
+    
     var delegate: UnitButtonDelegate?
     
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
         setupView()
-        addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
-        addTarget(self, action: #selector(buttonTouchUpInside), for: .touchUpInside)
-        addTarget(self, action: #selector(buttonTouchUpInside), for: .touchUpOutside)
     }
     
     required init?(coder: NSCoder) {
@@ -30,20 +41,8 @@ class UnitButton: UIButton {
     }
     
     @objc
-    func buttonTouchDown() {
-        backgroundColor = .systemGray
-        setTitleColor(.label, for: .normal)
-        setTitleColor(.label, for: .highlighted)
-        self.delegate?.unitButtonPressed()
-    }
-    
-    @objc
     func buttonTouchUpInside() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-            self.backgroundColor = .systemGreen
-            self.setTitleColor(.systemBackground, for: .normal)
-            self.setTitleColor(.systemBackground, for: .highlighted)
-        }
+        self.delegate?.unitButtonPressed()
     }
 }
 
@@ -51,10 +50,14 @@ extension UnitButton: CodeView {
     
     func setupView() {
         translatesAutoresizingMaskIntoConstraints = false
-        setTitle("USD", for: .normal)
-        setTitleColor(.systemBackground, for: .normal)
+        setTitle("---", for: .normal)
         backgroundColor = UIColor.systemGreen
-        titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        titleLabel?.font = UIFont.boldSystemFont(ofSize: 32)
+        layer.cornerRadius = 14
+        isExclusiveTouch = true
+        setTitleColor(.systemBackground, for: .normal)
+        setTitleColor(.label, for: .highlighted)
+        addTarget(self, action: #selector(buttonTouchUpInside), for: .touchUpInside)
     }
 }
 

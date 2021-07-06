@@ -9,11 +9,19 @@ import UIKit
 
 final class SelectionViewController: CurrencyConverterViewController {
     
-    var delegate: SelectionViewControllerDelegate?
-    var filteredUnits = Currency.availableUnits
     let screen = SelectionScreen()
     let unitIndex: Int
-    var newUnit: String?
+    
+    var newUnit: String? = nil
+    var delegate: SelectionViewControllerDelegate? = nil
+    
+    var filteredUnits = Currency.availableUnits {
+        didSet {
+            DispatchQueue.main.async {
+                self.screen.availableUnitsTableView.reloadData()
+            }
+        }
+    }
     
     init(for unitIndex: Int) {
         self.unitIndex = unitIndex    
@@ -31,15 +39,27 @@ final class SelectionViewController: CurrencyConverterViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.sceneTitle = "Selection"
+        fetchData()
+        setupDelegates()
+        setupUI()
+    }
+    
+    func fetchData() {
+        Provider.getAvailableCurrencies(completion: { currenciesResults in
+            Currency.availableUnits = currenciesResults.availableCurrencies
+            self.filteredUnits = Currency.availableUnits
+        })
+    }
+    
+    func setupDelegates() {
         screen.availableUnitsTableView.delegate = self
         screen.availableUnitsTableView.dataSource = self
         screen.unitSearchBar.delegate = self
-        setupUI()
     }
     
     func setupUI() {
         title = Scenes.Selection.title
+        self.sceneTitle = "Selection"
     }
 }
 
@@ -66,12 +86,19 @@ extension SelectionViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension SelectionViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText == "" {
+        
+        var text = searchText.replacingOccurrences(of: " ", with: "").lowercased().letters
+        
+        if text == "" {
             filteredUnits = Currency.availableUnits
             return
         }
         filteredUnits = Currency.availableUnits.filter {
-            $0.value.lowercased().contains(searchText.lowercased()) || $0.key.lowercased().contains(searchText.lowercased())
+            
+            let unitId = $0.key.lowercased()
+            let unitName = $0.value.lowercased()
+            
+            return unitId.contains(text) || unitName.contains(text)
         }
         screen.availableUnitsTableView.reloadData()
     }

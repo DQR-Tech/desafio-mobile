@@ -9,21 +9,27 @@ import UIKit
 
 class AmountTextField: UITextField {
         
-    // MARK: - Properties
+    // MARK: - Observed Properties
+    
     var amount: Double? {
         didSet {
-            text  = Decimal(amount!).currency
+            text = Decimal(amount!).currency
         }
     }
-    var decimal: Decimal { string.decimal / pow(10, Formatter.currency.maximumFractionDigits) }
-    var maximum: Decimal = 999_999_999_999.99
-    private var lastValue: String?
+    
     var locale: Locale = .current {
         didSet {
             Formatter.currency.locale = locale
             sendActions(for: .editingChanged)
         }
     }
+    
+    // MARK: - Other properties
+    
+    var decimal: Decimal { string.decimal / pow(10, Formatter.currency.maximumFractionDigits) }
+    var maximum: Decimal = 999_999_999_999.99
+    private var lastValue: String?
+    
     
     // MARK: - Initialize
     
@@ -38,7 +44,8 @@ class AmountTextField: UITextField {
         minimumFontSize = 10
         font = UIFont.boldSystemFont(ofSize: 32)
         textAlignment = .center
-        self.addPadding(.both(20))
+        isExclusiveTouch = true
+        addPadding(.both(20))
     }
     
     required init?(coder: NSCoder) {
@@ -53,15 +60,18 @@ class AmountTextField: UITextField {
         keyboardType = .numberPad
         sendActions(for: .editingChanged)
     }
+    
     override func deleteBackward() {
         text = string.digits.dropLast().string
         sendActions(for: .editingChanged)
     }
+    
     @objc func editingChanged() {
         guard decimal <= maximum else {
             text = lastValue
             return
         }
+        
         text = decimal.currency
         lastValue = text
     }
@@ -116,7 +126,6 @@ extension UITextField {
 
         self.leftViewMode = .always
         self.layer.masksToBounds = true
-
 
         switch padding {
 

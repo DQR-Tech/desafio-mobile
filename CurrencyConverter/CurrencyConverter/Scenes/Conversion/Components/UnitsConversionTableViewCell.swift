@@ -64,12 +64,12 @@ extension UnitsConversionTableViewCell: ParentCodeView {
     func setupConstraints() {
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
-        let unitButtonWidth = screenWidth - 230
+        let unitButtonWidth = screenWidth / 3
         
-        unitButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        unitButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
         unitButton.widthAnchor.constraint(equalToConstant: unitButtonWidth).isActive = true
-        unitButton.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        unitButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        unitButton.topAnchor.constraint(equalTo: topAnchor, constant: 25).isActive = true
+        unitButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -25).isActive = true
 
         amountTextField.leadingAnchor.constraint(greaterThanOrEqualTo: unitButton.trailingAnchor, constant: 20).isActive = true
         amountTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true

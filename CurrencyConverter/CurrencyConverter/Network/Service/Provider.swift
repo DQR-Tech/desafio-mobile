@@ -11,11 +11,7 @@ open class Provider {
     
     static let apiKey = "b9ab56258a9c7c740f0cc1182856ef13"
     static let baseURL = "http://apilayer.net/api/"
-    
-    static var quotesResults: QuotesResults?
-    static var currenciesResults: CurrenciesResults?
-    static var apiResults: APIResults?
-    
+        
     static func getLatestQuotes(completion: @escaping(QuotesResults) -> Void) {
         
         let parameter = "live"
@@ -30,7 +26,7 @@ open class Provider {
                 print(error)
                 return
             }
-     
+
             // Parse JSON data
             if let data = data {
                 do {
@@ -45,10 +41,7 @@ open class Provider {
                         let newKey = String(usdPrefixedKey.suffix(3))
                         latestConversionRates[newKey] = conversionRate
                     }
-                    
                     let quotesResults = QuotesResults(latestConversionRates: latestConversionRates, latestTimestamp: latestTimestamp)
-                    
-                    Provider.quotesResults = quotesResults
                     completion(quotesResults)
                 } catch {
                     print(error.localizedDescription)
@@ -81,7 +74,6 @@ open class Provider {
                     let availableCurrencies = currenciesResponse.currencies
                     
                     let currenciesResults = CurrenciesResults(availableCurrencies: availableCurrencies)
-                    Provider.currenciesResults = currenciesResults
                     completion(currenciesResults)
                 } catch {
                     print(error.localizedDescription)

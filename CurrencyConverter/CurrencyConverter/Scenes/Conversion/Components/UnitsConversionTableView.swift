@@ -13,7 +13,6 @@ class UnitsConversionTableView: UITableView {
         super.init(frame: .zero, style: .plain)
         translatesAutoresizingMaskIntoConstraints = false
         register(UnitsConversionTableViewCell.self, forCellReuseIdentifier: UnitsConversionTableViewCell.identifier)
-        tableFooterView = UIView()
     }
     
     required init?(coder: NSCoder) {

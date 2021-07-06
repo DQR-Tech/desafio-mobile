@@ -15,8 +15,6 @@ final class ConversionScreen: UIView {
         super.init(frame: frame)
         setupSubviews()
         setupView()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIView.endEditing(_:)))
-        addGestureRecognizer(tap)
     }
     
     required init?(coder: NSCoder) {
@@ -27,6 +25,8 @@ final class ConversionScreen: UIView {
 extension ConversionScreen: ParentCodeView {
     
     func setupView() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIView.endEditing(_:)))
+        addGestureRecognizer(tap)
     }
     
     func addSubviews() {

@@ -60,6 +60,9 @@
 		A8C1E09F26917C22001DE65C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8FFBCD1268F572200CA8247 /* LaunchScreen.storyboard */; };
 		A8C1E0A026917C22001DE65C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8FFBCCF268F572200CA8247 /* Assets.xcassets */; };
 		A8C1E0B326917CEA001DE65C /* CurrencyConverterViewController+Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C1E0B226917CEA001DE65C /* CurrencyConverterViewController+Debugging.swift */; };
+		A8F1579826941F22008990AF /* String+Letters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F1579726941F22008990AF /* String+Letters.swift */; };
+		A8F1579D26941F9B008990AF /* String+Letters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F1579726941F22008990AF /* String+Letters.swift */; };
+		A8F157A826941F9D008990AF /* String+Letters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F1579726941F22008990AF /* String+Letters.swift */; };
 		A8F8405B268FC1F90043F9F8 /* ConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8405A268FC1F90043F9F8 /* ConversionViewController.swift */; };
 		A8F8405C268FC1F90043F9F8 /* ConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8405A268FC1F90043F9F8 /* ConversionViewController.swift */; };
 		A8F8407A268FCD380043F9F8 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F84079268FCD380043F9F8 /* CodeView.swift */; };
@@ -119,6 +122,7 @@
 		A8C1E0A426917C22001DE65C /* CurrencyConverterDebugging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConverterDebugging.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8C1E0A926917C22001DE65C /* CurrencyConverter copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CurrencyConverter copy-Info.plist"; path = "/Users/lucasmac/desafio-mobile/CurrencyConverter/CurrencyConverter copy-Info.plist"; sourceTree = "<absolute>"; };
 		A8C1E0B226917CEA001DE65C /* CurrencyConverterViewController+Debugging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyConverterViewController+Debugging.swift"; sourceTree = "<group>"; };
+		A8F1579726941F22008990AF /* String+Letters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Letters.swift"; sourceTree = "<group>"; };
 		A8F8405A268FC1F90043F9F8 /* ConversionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionViewController.swift; sourceTree = "<group>"; };
 		A8F84079268FCD380043F9F8 /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		A8F84082268FCD7C0043F9F8 /* ParentCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCodeView.swift; sourceTree = "<group>"; };
@@ -217,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				A8C1E0B226917CEA001DE65C /* CurrencyConverterViewController+Debugging.swift */,
+				A8F1579726941F22008990AF /* String+Letters.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -562,6 +567,7 @@
 				A8126A192692F06B00E224D1 /* APIResults.swift in Sources */,
 				A8807F162693A55600858207 /* CurrenciesResponse.swift in Sources */,
 				A8A9B6CE269212C8003A602F /* UnitsConversionTableViewCell.swift in Sources */,
+				A8F1579D26941F9B008990AF /* String+Letters.swift in Sources */,
 				A8126A3D2692F96900E224D1 /* QuotesResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -590,6 +596,7 @@
 				A8126A172692F06B00E224D1 /* APIResults.swift in Sources */,
 				A8126A052692EC0F00E224D1 /* Provider.swift in Sources */,
 				A81269BA2692D18200E224D1 /* AvailableUnitsTableViewCell.swift in Sources */,
+				A8F1579826941F22008990AF /* String+Letters.swift in Sources */,
 				A81269F02692EB2900E224D1 /* CurrenciesResponse.swift in Sources */,
 				A81269B22692D14100E224D1 /* AvailableUnitsTableView.swift in Sources */,
 				A81269C72692D3CE00E224D1 /* UnitSearchBar.swift in Sources */,
@@ -608,6 +615,7 @@
 				A8F84084268FCD7C0043F9F8 /* ParentCodeView.swift in Sources */,
 				A81269C82692D3CE00E224D1 /* UnitSearchBar.swift in Sources */,
 				A8734AF226916E3500D25DE5 /* CurrencyConverterViewController.swift in Sources */,
+				A8F157A826941F9D008990AF /* String+Letters.swift in Sources */,
 				A8126A2A2692F7EF00E224D1 /* Provider.swift in Sources */,
 				A812697826927FE300E224D1 /* UnitsConversionTableView.swift in Sources */,
 				A8A9B6CD269212C8003A602F /* UnitsConversionTableViewCell.swift in Sources */,

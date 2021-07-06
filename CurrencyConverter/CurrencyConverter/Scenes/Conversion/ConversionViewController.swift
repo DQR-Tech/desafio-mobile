@@ -9,7 +9,15 @@ import UIKit
 
 final class ConversionViewController: CurrencyConverterViewController {
     
+    // MARK: - Properties
+    
+    let screen = ConversionScreen()
+    
     var globalAmountInDollars: Double = 1.00
+    var units = ["USD", "BRL"]
+    
+    // MARK: - Observed Properties
+    
     var conversionRates = Currency.conversionRates {
         didSet {
             DispatchQueue.main.async {
@@ -18,12 +26,7 @@ final class ConversionViewController: CurrencyConverterViewController {
             print(conversionRates)
         }
     }
-    let screen = ConversionScreen()
-    var units = [
-        "USD",
-        "BRL"
-    ]
-    
+        
     // MARK: - Life Cycle
     
     override init() {
@@ -41,20 +44,19 @@ final class ConversionViewController: CurrencyConverterViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchData()
         setupDelegates()
         setupUI()
-        screen.unitsConversionTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        screen.unitsConversionTableView.reloadData()
-        fetchData()
     }
     
     func fetchData() {
         Provider.getLatestQuotes(completion: { (quotesResults) in
             self.conversionRates = quotesResults.latestConversionRates
+            Currency.conversionRates = quotesResults.latestConversionRates
         })
     }
             
@@ -74,6 +76,7 @@ extension ConversionViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: UnitsConversionTableViewCell.identifier) as! UnitsConversionTableViewCell
         let position = indexPath.row
         
@@ -97,7 +100,14 @@ extension ConversionViewController: UITableViewDataSource, UITableViewDelegate {
         return 100
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.text = "Last update: 06/06/2021 01:40:24"
+        label.textColor = .gray
+        label.font = .systemFont(ofSize: 12)
+        label.textAlignment = .center
+        return label
     }
 }
 
