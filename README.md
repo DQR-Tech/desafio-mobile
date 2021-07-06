@@ -41,7 +41,7 @@ Para fazer uma conversão entre quaisquer outras duas moedas, será necessário 
 
 -   [ ] Realizar a persistência local da lista de moedas e taxas para permitir o uso do app no caso de falta de internet.
 -   [ ] Desenvolver testes unitários e/ou funcionais.
--   [X]* Desenvolver o app seguindo a arquitetura MVVM. *falta refatorar
+-   [X] * Desenvolver o app seguindo a arquitetura MVVM. *falta refatorar
 -   [ ] Pipeline automatizado.
 ### Extra (meu)
 -   [X] Edição em ambos campos (dois text fields que ao editados convertem em tempo real um ao outro)
