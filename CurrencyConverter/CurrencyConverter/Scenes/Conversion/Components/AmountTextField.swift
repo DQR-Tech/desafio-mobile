@@ -8,7 +8,7 @@
 import UIKit
 
 class AmountTextField: UITextField {
-        
+    
     // MARK: - Observed Properties
     
     var amount: Double? = nil {
