@@ -87,7 +87,7 @@ extension SelectionViewController: UITableViewDelegate, UITableViewDataSource {
 extension SelectionViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        var text = searchText.replacingOccurrences(of: " ", with: "").lowercased().letters
+        let text = searchText.replacingOccurrences(of: " ", with: "").lowercased().letters
         
         if text == "" {
             filteredUnits = Currency.availableUnits
