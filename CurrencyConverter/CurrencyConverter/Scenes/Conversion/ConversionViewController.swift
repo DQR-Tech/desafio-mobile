@@ -10,7 +10,14 @@ import UIKit
 final class ConversionViewController: CurrencyConverterViewController {
     
     var globalAmountInDollars: Double = 1.00
-    var conversionRates = Currency.conversionRates
+    var conversionRates = Currency.conversionRates {
+        didSet {
+            DispatchQueue.main.async {
+                self.screen.unitsConversionTableView.reloadData()
+            }
+            print(conversionRates)
+        }
+    }
     let screen = ConversionScreen()
     var units = [
         "USD",
@@ -37,17 +44,18 @@ final class ConversionViewController: CurrencyConverterViewController {
         setupDelegates()
         setupUI()
         screen.unitsConversionTableView.reloadData()
-        Provider.getLatestQuotes(completion: { quotesList in
-            self.units = quotesList.quotes.map{$0.unit}
-            print(Provider.quotes)
-
-        })
-    
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         screen.unitsConversionTableView.reloadData()
+        fetchData()
+    }
+    
+    func fetchData() {
+        Provider.getLatestQuotes(completion: { (quotesResults) in
+            self.conversionRates = quotesResults.latestConversionRates
+        })
     }
             
     func setupUI() {
@@ -71,7 +79,7 @@ extension ConversionViewController: UITableViewDataSource, UITableViewDelegate {
         
         let unit = units[position]
         
-        guard let conversionRate = Currency.conversionRates[unit] else { return cell}
+        guard let conversionRate = conversionRates[unit] else { return cell}
         let amountConverted = globalAmountInDollars * conversionRate
         
         cell.unit = unit

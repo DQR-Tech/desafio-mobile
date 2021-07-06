@@ -7,14 +7,16 @@
 
 import Foundation
 
-class Provider {
+open class Provider {
     
     static let apiKey = "b9ab56258a9c7c740f0cc1182856ef13"
     static let baseURL = "http://apilayer.net/api/"
     
-    static var quotes: Quotes? = nil
-
-    static func getLatestQuotes(completion: @escaping(Quotes) -> Void) {
+    static var quotesResults: QuotesResults?
+    static var currenciesResults: CurrenciesResults?
+    static var apiResults: APIResults?
+    
+    static func getLatestQuotes(completion: @escaping(QuotesResults) -> Void) {
         
         let parameter = "live"
         let urlString = "\(baseURL)/\(parameter)?access_key=\(apiKey)"
@@ -33,11 +35,54 @@ class Provider {
             if let data = data {
                 do {
                     let quotesResponse = try JSONDecoder().decode(QuotesResponse.self, from: data)
-                    let timestamp = quotesResponse.timestamp
-                    let quotesList = quotesResponse.quotes.map {Quote(unit: $0.key, rate: $0.value)}
-                    let quotes = Quotes(timestamp: timestamp, quotes: quotesList)
-                    Provider.quotes = quotes
-                    completion(quotes)
+                    
+                    let latestTimestamp = quotesResponse.timestamp
+                    print("Timestamp: \(latestTimestamp)")
+                    let latestConversionRatesWithUsdPrefixedOnKeys = quotesResponse.quotes
+                    
+                    var latestConversionRates: [String: Double] = [:]
+                    for (usdPrefixedKey, conversionRate) in latestConversionRatesWithUsdPrefixedOnKeys {
+                        let newKey = String(usdPrefixedKey.suffix(3))
+                        latestConversionRates[newKey] = conversionRate
+                    }
+                    
+                    let quotesResults = QuotesResults(latestConversionRates: latestConversionRates, latestTimestamp: latestTimestamp)
+                    
+                    Provider.quotesResults = quotesResults
+                    completion(quotesResults)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+        })
+        task.resume()
+    }
+    
+    static func getAvailableCurrencies(completion: @escaping(CurrenciesResults) -> Void) {
+        
+        let parameter = "list"
+        let urlString = "\(baseURL)/\(parameter)?access_key=\(apiKey)"
+        
+        guard let currenciesUrl = URL(string: urlString) else { return }
+     
+        let urlRequest = URLRequest(url: currenciesUrl)
+        let task = URLSession.shared.dataTask(with: urlRequest, completionHandler: { (data, response, error) -> Void in
+     
+            if let error = error {
+                print(error)
+                return
+            }
+     
+            // Parse JSON data
+            if let data = data {
+                do {
+                    let currenciesResponse = try JSONDecoder().decode(CurrenciesResponse.self, from: data)
+                    
+                    let availableCurrencies = currenciesResponse.currencies
+                    
+                    let currenciesResults = CurrenciesResults(availableCurrencies: availableCurrencies)
+                    Provider.currenciesResults = currenciesResults
+                    completion(currenciesResults)
                 } catch {
                     print(error.localizedDescription)
                 }
