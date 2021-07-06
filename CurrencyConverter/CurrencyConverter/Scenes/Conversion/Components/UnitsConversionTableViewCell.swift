@@ -38,9 +38,6 @@ class UnitsConversionTableViewCell: UITableViewCell {
         setupView()
         setupSubviews()
         setupDelegates()
-        amountTextField.locale = Locale(identifier: "en_US")
-        selectionStyle = .none
-        amountTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
     required init?(coder: NSCoder) {
@@ -78,6 +75,8 @@ extension UnitsConversionTableViewCell: ParentCodeView {
     }
     
     func setupView() {
+        selectionStyle = .none
+        amountTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
 }
 

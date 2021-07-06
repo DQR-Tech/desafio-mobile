@@ -63,6 +63,13 @@
 		A8F1579826941F22008990AF /* String+Letters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F1579726941F22008990AF /* String+Letters.swift */; };
 		A8F1579D26941F9B008990AF /* String+Letters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F1579726941F22008990AF /* String+Letters.swift */; };
 		A8F157A826941F9D008990AF /* String+Letters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F1579726941F22008990AF /* String+Letters.swift */; };
+		A8F157C22694266F008990AF /* UITextField+Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F157C12694266F008990AF /* UITextField+Padding.swift */; };
+		A8F157C726942696008990AF /* UITextField+Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F157C12694266F008990AF /* UITextField+Padding.swift */; };
+		A8F157CC26942697008990AF /* UITextField+Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F157C12694266F008990AF /* UITextField+Padding.swift */; };
+		A8F157D2269426E3008990AF /* String+Locale.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F157D1269426E3008990AF /* String+Locale.swift */; };
+		A8F157E7269427CE008990AF /* String+Locale.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F157D1269426E3008990AF /* String+Locale.swift */; };
+		A8F157EC269427CF008990AF /* String+Locale.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F157D1269426E3008990AF /* String+Locale.swift */; };
+		A8F1580E26942BA4008990AF /* Double+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F1580D26942BA4008990AF /* Double+Date.swift */; };
 		A8F8405B268FC1F90043F9F8 /* ConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8405A268FC1F90043F9F8 /* ConversionViewController.swift */; };
 		A8F8405C268FC1F90043F9F8 /* ConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8405A268FC1F90043F9F8 /* ConversionViewController.swift */; };
 		A8F8407A268FCD380043F9F8 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F84079268FCD380043F9F8 /* CodeView.swift */; };
@@ -123,6 +130,9 @@
 		A8C1E0A926917C22001DE65C /* CurrencyConverter copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CurrencyConverter copy-Info.plist"; path = "/Users/lucasmac/desafio-mobile/CurrencyConverter/CurrencyConverter copy-Info.plist"; sourceTree = "<absolute>"; };
 		A8C1E0B226917CEA001DE65C /* CurrencyConverterViewController+Debugging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyConverterViewController+Debugging.swift"; sourceTree = "<group>"; };
 		A8F1579726941F22008990AF /* String+Letters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Letters.swift"; sourceTree = "<group>"; };
+		A8F157C12694266F008990AF /* UITextField+Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Padding.swift"; sourceTree = "<group>"; };
+		A8F157D1269426E3008990AF /* String+Locale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Locale.swift"; sourceTree = "<group>"; };
+		A8F1580D26942BA4008990AF /* Double+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Date.swift"; sourceTree = "<group>"; };
 		A8F8405A268FC1F90043F9F8 /* ConversionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionViewController.swift; sourceTree = "<group>"; };
 		A8F84079268FCD380043F9F8 /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		A8F84082268FCD7C0043F9F8 /* ParentCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCodeView.swift; sourceTree = "<group>"; };
@@ -222,6 +232,9 @@
 			children = (
 				A8C1E0B226917CEA001DE65C /* CurrencyConverterViewController+Debugging.swift */,
 				A8F1579726941F22008990AF /* String+Letters.swift */,
+				A8F157C12694266F008990AF /* UITextField+Padding.swift */,
+				A8F157D1269426E3008990AF /* String+Locale.swift */,
+				A8F1580D26942BA4008990AF /* Double+Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -558,6 +571,7 @@
 				A8C1E09626917C22001DE65C /* ParentCodeView.swift in Sources */,
 				A8C1E09726917C22001DE65C /* SceneDelegate.swift in Sources */,
 				A8C1E09826917C22001DE65C /* SelectionScreen.swift in Sources */,
+				A8F157EC269427CF008990AF /* String+Locale.swift in Sources */,
 				A8C1E09926917C22001DE65C /* ConversionViewController.swift in Sources */,
 				A8C1E09B26917C22001DE65C /* CurrencyUnit.swift in Sources */,
 				A812697926927FE300E224D1 /* UnitsConversionTableView.swift in Sources */,
@@ -567,6 +581,7 @@
 				A8126A192692F06B00E224D1 /* APIResults.swift in Sources */,
 				A8807F162693A55600858207 /* CurrenciesResponse.swift in Sources */,
 				A8A9B6CE269212C8003A602F /* UnitsConversionTableViewCell.swift in Sources */,
+				A8F157CC26942697008990AF /* UITextField+Padding.swift in Sources */,
 				A8F1579D26941F9B008990AF /* String+Letters.swift in Sources */,
 				A8126A3D2692F96900E224D1 /* QuotesResponse.swift in Sources */,
 			);
@@ -584,7 +599,9 @@
 				A8F840B5268FDA020043F9F8 /* AppConstants.swift in Sources */,
 				A8F840EC268FE6E50043F9F8 /* SelectionViewController.swift in Sources */,
 				A8F8407A268FCD380043F9F8 /* CodeView.swift in Sources */,
+				A8F157C22694266F008990AF /* UITextField+Padding.swift in Sources */,
 				A8734AF126916E3500D25DE5 /* CurrencyConverterViewController.swift in Sources */,
+				A8F157D2269426E3008990AF /* String+Locale.swift in Sources */,
 				A8A9B6DC26923C7B003A602F /* AmountTextField.swift in Sources */,
 				A8F84083268FCD7C0043F9F8 /* ParentCodeView.swift in Sources */,
 				A8FFBCC6268F572200CA8247 /* SceneDelegate.swift in Sources */,
@@ -598,6 +615,7 @@
 				A81269BA2692D18200E224D1 /* AvailableUnitsTableViewCell.swift in Sources */,
 				A8F1579826941F22008990AF /* String+Letters.swift in Sources */,
 				A81269F02692EB2900E224D1 /* CurrenciesResponse.swift in Sources */,
+				A8F1580E26942BA4008990AF /* Double+Date.swift in Sources */,
 				A81269B22692D14100E224D1 /* AvailableUnitsTableView.swift in Sources */,
 				A81269C72692D3CE00E224D1 /* UnitSearchBar.swift in Sources */,
 			);
@@ -608,12 +626,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8A9B6D526922FAD003A602F /* UnitButton.swift in Sources */,
+				A8F157C726942696008990AF /* UITextField+Padding.swift in Sources */,
 				A8FFBCDE268F572200CA8247 /* CurrencyConverterTests.swift in Sources */,
 				A8126A3C2692F96800E224D1 /* QuotesResponse.swift in Sources */,
 				A8F840B6268FDA020043F9F8 /* AppConstants.swift in Sources */,
 				A81269B32692D14100E224D1 /* AvailableUnitsTableView.swift in Sources */,
 				A8F84084268FCD7C0043F9F8 /* ParentCodeView.swift in Sources */,
 				A81269C82692D3CE00E224D1 /* UnitSearchBar.swift in Sources */,
+				A8F157E7269427CE008990AF /* String+Locale.swift in Sources */,
 				A8734AF226916E3500D25DE5 /* CurrencyConverterViewController.swift in Sources */,
 				A8F157A826941F9D008990AF /* String+Letters.swift in Sources */,
 				A8126A2A2692F7EF00E224D1 /* Provider.swift in Sources */,

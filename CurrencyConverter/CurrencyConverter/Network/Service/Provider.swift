@@ -27,13 +27,11 @@ open class Provider {
                 return
             }
 
-            // Parse JSON data
             if let data = data {
                 do {
                     let quotesResponse = try JSONDecoder().decode(QuotesResponse.self, from: data)
                     
                     let latestTimestamp = quotesResponse.timestamp
-                    print("Timestamp: \(latestTimestamp)")
                     let latestConversionRatesWithUsdPrefixedOnKeys = quotesResponse.quotes
                     
                     var latestConversionRates: [String: Double] = [:]
@@ -66,7 +64,6 @@ open class Provider {
                 return
             }
      
-            // Parse JSON data
             if let data = data {
                 do {
                     let currenciesResponse = try JSONDecoder().decode(CurrenciesResponse.self, from: data)

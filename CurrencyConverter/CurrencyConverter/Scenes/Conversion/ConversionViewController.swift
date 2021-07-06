@@ -53,6 +53,8 @@ final class ConversionViewController: CurrencyConverterViewController {
         super.viewWillAppear(animated)
     }
     
+    // MARK: - Methods
+    
     func fetchData() {
         Provider.getLatestQuotes(completion: { (quotesResults) in
             self.conversionRates = quotesResults.latestConversionRates
@@ -89,6 +91,15 @@ extension ConversionViewController: UITableViewDataSource, UITableViewDelegate {
     
         cell.amount = amountConverted
         cell.position = position
+
+//        let unitSymbol = getSymbolForCurrencyCode(code: unit)
+//        let newLocale = locale(from: unit)
+//        print(unitSymbol)
+//        print(newLocale.currencyCode)
+//        cell.amountTextField.locale = newLocale
+//        print(cell.amountTextField.locale?.currencyCode)
+//        print(cell.amountTextField.locale?.currencySymbol)
+//        cell.amountTextField.locale = Locale(identifier: "en_US")
         
         cell.delegate = self
         cell.unitButton.backgroundColor = .systemGreen
