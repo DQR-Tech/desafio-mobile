@@ -14,3 +14,4 @@ struct CurrenciesResponse: Codable {
     let terms, privacy: String
     let currencies: [String: String]
 }
+

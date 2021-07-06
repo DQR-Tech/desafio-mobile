@@ -17,11 +17,11 @@ struct Scenes {
 }
 
 struct Currency {
-    static var conversionRates = [
-        "USD": 1,
-        "BRL": 5.04,
-    ]
-    static var availableUnits: [String:String] = [ :
-    ]
-
+    static var shared: Currency = Currency()
+    
+    static var conversionRates: [String:Double] = [:]
+    
+    static var availableUnits: [String:String] = [:]
+    
+    static var latestUpdateTimestamp: Int = 1481721300
 }

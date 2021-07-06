@@ -8,16 +8,16 @@
 import UIKit
 
 class AmountTextField: UITextField {
-        
+    
     // MARK: - Observed Properties
     
-    var amount: Double? {
+    var amount: Double? = nil {
         didSet {
             text = Decimal(amount!).currency
         }
     }
     
-    var locale: Locale = .current {
+    var locale: Locale = .init(identifier: "en_US") {
         didSet {
             Formatter.currency.locale = locale
             sendActions(for: .editingChanged)
@@ -29,7 +29,6 @@ class AmountTextField: UITextField {
     var decimal: Decimal { string.decimal / pow(10, Formatter.currency.maximumFractionDigits) }
     var maximum: Decimal = 999_999_999_999.99
     private var lastValue: String?
-    
     
     // MARK: - Initialize
     
@@ -112,41 +111,4 @@ extension Decimal {
 
 extension LosslessStringConvertible {
     var string: String { .init(self) }
-}
-
-extension UITextField {
-
-    enum PaddingSide {
-        case left(CGFloat)
-        case right(CGFloat)
-        case both(CGFloat)
-    }
-
-    func addPadding(_ padding: PaddingSide) {
-
-        self.leftViewMode = .always
-        self.layer.masksToBounds = true
-
-        switch padding {
-
-        case .left(let spacing):
-            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: spacing, height: self.frame.height))
-            self.leftView = paddingView
-            self.rightViewMode = .always
-
-        case .right(let spacing):
-            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: spacing, height: self.frame.height))
-            self.rightView = paddingView
-            self.rightViewMode = .always
-
-        case .both(let spacing):
-            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: spacing, height: self.frame.height))
-            // left
-            self.leftView = paddingView
-            self.leftViewMode = .always
-            // right
-            self.rightView = paddingView
-            self.rightViewMode = .always
-        }
-    }
 }
