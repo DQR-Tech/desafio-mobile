@@ -33,13 +33,13 @@ Para fazer uma conversão entre quaisquer outras duas moedas, será necessário 
 
 -   [X] As taxas de câmbio disponíveis devem ser obtidas da chamada de [API Supported Currencies (/list)](https://currencylayer.com/documentation)
 -   [X] A cotação atual deve ser obtida da chamada de [API Real-time Rates (/live)](https://currencylayer.com/documentation)
--   [ ] É necessário fazer tratamento de erros e dos fluxos de exceção, como busca vazia, carregamento e outros erros que possam ocorrer.
+-   [x] É necessário fazer tratamento de erros e dos fluxos de exceção, como busca vazia, carregamento e outros erros que possam ocorrer.
 -   [X] Funcionalidade de busca na lista de moedas por nome ou sigla da moeda ("dólar" ou "USD").
--   [ ] Ordenação da lista de moedas por nome ou código.
+-   [X] Ordenação da lista de moedas por nome ou código.
 
 ### Opcionais (não necessário, porém contam pontos):
 
--   [ ] Realizar a persistência local da lista de moedas e taxas para permitir o uso do app no caso de falta de internet.
+-   [ ] Realizar a persistência local da lista de moedas e taxas para permitir o uso do app no caso de falta de internet. * camada DAO
 -   [ ] Desenvolver testes unitários e/ou funcionais.
 -   [X] * Desenvolver o app seguindo a arquitetura MVVM. *falta refatorar
 -   [ ] Pipeline automatizado.
@@ -48,7 +48,7 @@ Para fazer uma conversão entre quaisquer outras duas moedas, será necessário 
 -   [X] Todo o aplicativo em view code (baseado em protocolos)
 -   [X] Suporte para português e inglês (Localizable.strings)
 -   [ ] Símbolo da unidade de moeda no text field
--   [ ] App design (icon, color palette)
+-   [x] App design (icon, color palette)
 -   [ ] Launch Screen animation
 -   [ ] Acessibilidade
 -   [ ] Pull to refresh
