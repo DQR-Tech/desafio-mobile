@@ -19,6 +19,7 @@
 		2F006F3E26990336004AC532 /* CurrencyListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F006F3D26990336004AC532 /* CurrencyListController.swift */; };
 		2F006F4326990374004AC532 /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F006F4226990374004AC532 /* CurrencyViewModel.swift */; };
 		2F006F48269903B4004AC532 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F006F47269903B4004AC532 /* BaseViewController.swift */; };
+		2F006F4D26990406004AC532 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F006F4C26990406004AC532 /* UITextField+Extensions.swift */; };
 		2F4CDA752696848C001B08F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4CDA742696848C001B08F6 /* AppDelegate.swift */; };
 		2F4CDA772696848C001B08F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4CDA762696848C001B08F6 /* SceneDelegate.swift */; };
 		2F4CDA792696848C001B08F6 /* CurrencyConverterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4CDA782696848C001B08F6 /* CurrencyConverterVC.swift */; };
@@ -61,6 +62,7 @@
 		2F006F3D26990336004AC532 /* CurrencyListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListController.swift; sourceTree = "<group>"; };
 		2F006F4226990374004AC532 /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
 		2F006F47269903B4004AC532 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		2F006F4C26990406004AC532 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		2F4CDA712696848C001B08F6 /* DesafioBTG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesafioBTG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F4CDA742696848C001B08F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F4CDA762696848C001B08F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 		2F006F02269688CA004AC532 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2F006F4C26990406004AC532 /* UITextField+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 				2F006F2026968B71004AC532 /* ConnectionErrorManager.swift in Sources */,
 				2F006F2F2697B969004AC532 /* CurrencyListView.swift in Sources */,
 				2F006F1826968B21004AC532 /* ConnectionManager.swift in Sources */,
+				2F006F4D26990406004AC532 /* UITextField+Extensions.swift in Sources */,
 				2F4CDA752696848C001B08F6 /* AppDelegate.swift in Sources */,
 				2F006F0A269689CF004AC532 /* RealTimeRatesModel.swift in Sources */,
 				2F4CDA772696848C001B08F6 /* SceneDelegate.swift in Sources */,
