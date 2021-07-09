@@ -18,7 +18,7 @@
 		2F006F392697B9F4004AC532 /* SelectedCurrencySingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F006F382697B9F4004AC532 /* SelectedCurrencySingleton.swift */; };
 		2F4CDA752696848C001B08F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4CDA742696848C001B08F6 /* AppDelegate.swift */; };
 		2F4CDA772696848C001B08F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4CDA762696848C001B08F6 /* SceneDelegate.swift */; };
-		2F4CDA792696848C001B08F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4CDA782696848C001B08F6 /* ViewController.swift */; };
+		2F4CDA792696848C001B08F6 /* CurrencyConverterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4CDA782696848C001B08F6 /* CurrencyConverterVC.swift */; };
 		2F4CDA7E26968490001B08F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F4CDA7D26968490001B08F6 /* Assets.xcassets */; };
 		2F4CDA8126968490001B08F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F4CDA7F26968490001B08F6 /* LaunchScreen.storyboard */; };
 		2F4CDA8C26968490001B08F6 /* DesafioBTGTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4CDA8B26968490001B08F6 /* DesafioBTGTests.swift */; };
@@ -58,7 +58,7 @@
 		2F4CDA712696848C001B08F6 /* DesafioBTG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesafioBTG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F4CDA742696848C001B08F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F4CDA762696848C001B08F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2F4CDA782696848C001B08F6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2F4CDA782696848C001B08F6 /* CurrencyConverterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterVC.swift; sourceTree = "<group>"; };
 		2F4CDA7D26968490001B08F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F4CDA8026968490001B08F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F4CDA8226968490001B08F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -135,7 +135,7 @@
 		2F006F04269688DF004AC532 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				2F4CDA782696848C001B08F6 /* ViewController.swift */,
+				2F4CDA782696848C001B08F6 /* CurrencyConverterVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -501,7 +501,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F4CDA792696848C001B08F6 /* ViewController.swift in Sources */,
+				2F4CDA792696848C001B08F6 /* CurrencyConverterVC.swift in Sources */,
 				2F006F392697B9F4004AC532 /* SelectedCurrencySingleton.swift in Sources */,
 				2F006F2A2697B940004AC532 /* CurrencyConverterView.swift in Sources */,
 				2F006F342697B98D004AC532 /* CurrencyListCell.swift in Sources */,
