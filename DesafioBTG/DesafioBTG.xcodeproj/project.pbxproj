@@ -17,6 +17,7 @@
 		2F006F342697B98D004AC532 /* CurrencyListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F006F332697B98D004AC532 /* CurrencyListCell.swift */; };
 		2F006F392697B9F4004AC532 /* SelectedCurrencySingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F006F382697B9F4004AC532 /* SelectedCurrencySingleton.swift */; };
 		2F006F3E26990336004AC532 /* CurrencyListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F006F3D26990336004AC532 /* CurrencyListController.swift */; };
+		2F006F4326990374004AC532 /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F006F4226990374004AC532 /* CurrencyViewModel.swift */; };
 		2F4CDA752696848C001B08F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4CDA742696848C001B08F6 /* AppDelegate.swift */; };
 		2F4CDA772696848C001B08F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4CDA762696848C001B08F6 /* SceneDelegate.swift */; };
 		2F4CDA792696848C001B08F6 /* CurrencyConverterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4CDA782696848C001B08F6 /* CurrencyConverterVC.swift */; };
@@ -57,6 +58,7 @@
 		2F006F332697B98D004AC532 /* CurrencyListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListCell.swift; sourceTree = "<group>"; };
 		2F006F382697B9F4004AC532 /* SelectedCurrencySingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCurrencySingleton.swift; sourceTree = "<group>"; };
 		2F006F3D26990336004AC532 /* CurrencyListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListController.swift; sourceTree = "<group>"; };
+		2F006F4226990374004AC532 /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
 		2F4CDA712696848C001B08F6 /* DesafioBTG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesafioBTG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F4CDA742696848C001B08F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F4CDA762696848C001B08F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 		2F006F05269688E7004AC532 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				2F006F4226990374004AC532 /* CurrencyViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				2F4CDA792696848C001B08F6 /* CurrencyConverterVC.swift in Sources */,
 				2F006F392697B9F4004AC532 /* SelectedCurrencySingleton.swift in Sources */,
 				2F006F2A2697B940004AC532 /* CurrencyConverterView.swift in Sources */,
+				2F006F4326990374004AC532 /* CurrencyViewModel.swift in Sources */,
 				2F006F342697B98D004AC532 /* CurrencyListCell.swift in Sources */,
 				2F006F2026968B71004AC532 /* ConnectionErrorManager.swift in Sources */,
 				2F006F2F2697B969004AC532 /* CurrencyListView.swift in Sources */,
