@@ -64,7 +64,7 @@ class CurrencyListView: UIView {
     }
     
     private func setupConstraints() {
-        searchBar.topAnchor.constraint(equalTo: topAnchor, constant: 60).isActive = true
+        searchBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
         searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24).isActive = true
         searchBar.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -24).isActive = true
         
