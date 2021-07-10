@@ -139,7 +139,7 @@ class CurrencyConverterView: UIView {
         stackViewLeft.distribution = .fillEqually
         stackViewLeft.spacing = 0
         
-        currencyDestinationLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        currencyDestinationLabel.widthAnchor.constraint(equalToConstant: 120).isActive = true
         currencyDestinationLabel.translatesAutoresizingMaskIntoConstraints = false
         stackViewLeft.addArrangedSubview(currencyDestinationLabel)
         
