@@ -50,6 +50,6 @@ Para fazer uma conversão entre quaisquer outras duas moedas, será necessário 
 
 Para submeter o seu desafio, faça um clone deste projeto, desenvolva localmente e, no final, abra um pull request com o formato "[Plataforma] - Nome" para a master até a data limite estabelecida. Um exemplo seria "[iOS] - João da Silva".
 
-Se tiver alguma dificuldade em submeter desta forma, sem problemas. Crie um repositório público e nos envie o link. Baixaremos um zip do repositório e executaremos no XCode ou Android Studio. É importante que seja possível executar sem dificuldades (se o teste não rodar não será possível avançar para a próxima fase).
+Se tiver alguma dificuldade em submeter desta forma, sem problemas. Crie um repositório público e nos envie o link. Baixaremos um zip do repositório e executaremos no Xcode ou Android Studio. É importante que seja possível executar sem dificuldades (se o teste não rodar não será possível avançar para a próxima fase).
 
 ### Boa sorte.
