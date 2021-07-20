@@ -17,9 +17,10 @@ Para fazer uma conversão entre quaisquer outras duas moedas, será necessário 
         -   Dois botões que permitam o usuário a escolher as moedas de origem e de destino.
         -   Um campo de entrada de texto onde o usuário possa inserir o valor a ser convertido.
         -   Um campo de texto para apresentar o valor convertido.
+        -   Um botão para converter os valores inseridos nos campos anteriores.
     -   A tela de listagem de moedas deve conter:
         -   Uma lista das moedas disponíves para conversão, mostrando código e nome da moeda.
--   A listagem de moedas deve ser mostrada obrigatoriamente em uma tela diferente da tela de conversão.
+#### IMPORTANTE: A listagem de moedas deve ser mostrada obrigatoriamente em uma tela diferente da tela de conversão.
 
 ## Observações
 
@@ -36,6 +37,7 @@ Para fazer uma conversão entre quaisquer outras duas moedas, será necessário 
 -   [ ] É necessário fazer tratamento de erros e dos fluxos de exceção, como busca vazia, carregamento e outros erros que possam ocorrer.
 -   [ ] Funcionalidade de busca na lista de moedas por nome ou sigla da moeda ("dólar" ou "USD").
 -   [ ] Ordenação da lista de moedas por nome ou código.
+#### Estes dois últimos itens são importantíssimos. Precisam estar presentes.
 
 ### Opcionais (não necessário, porém contam pontos):
 
@@ -47,5 +49,7 @@ Para fazer uma conversão entre quaisquer outras duas moedas, será necessário 
 ## Processo de submissão
 
 Para submeter o seu desafio, faça um clone deste projeto, desenvolva localmente e, no final, abra um pull request com o formato "[Plataforma] - Nome" para a master até a data limite estabelecida. Um exemplo seria "[iOS] - João da Silva".
+
+Se tiver alguma dificuldade em submeter desta forma, sem problemas. Crie um repositório público e nos envie o link. Baixaremos um zip do repositório e executaremos no XCode ou Android Studio. É importante que seja possível executar sem dificuldades (se o teste não rodar não será possível avançar para a próxima fase).
 
 ### Boa sorte.
