@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Currency Layer Converter</string>
+    <string name="label_from">From:</string>
+    <string name="label_empty">-</string>
+    <string name="label_value">value</string>
+    <string name="label_to">To:</string>
+    <string name="powered_by_currency_layer">powered by Currency Layer™</string>
+</resources>

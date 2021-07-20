@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_margin">8dp</dimen>
+    <dimen name="default_padding">8dp</dimen>
+    <dimen name="default_label_size">20sp</dimen>
+</resources>
