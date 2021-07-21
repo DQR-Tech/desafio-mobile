@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Desafio</string>
+    <string name="key_destino">KEY_DESTINO</string>
+    <string name="key_origem">KEY_ORIGEM</string>
+
+    <string name="nome_moeda">Nome da Moeda</string>
+    <string name="codigo_moeda">Codigo da Moeda</string>
+    <string name="origem">Moeda de Origem</string>
+    <string name="destino">Moeda de Destino</string>
+    <string name="digite_valor">Digite o valor</string>
+    <string name="valor">Valor</string>
+    <string name="escolhe_moedas">Escolhe as Moedas</string>
+</resources>
