@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desafio.R
-import com.example.desafio.domain.model.MoedasDto
 import kotlinx.android.synthetic.main.moeda_item.view.*
 
 class MoedaAdapter(
@@ -20,9 +19,9 @@ class MoedaAdapter(
 
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
         val codigo = ArrayList<String>(linkedHashMap.keys).get(position)
-        val moeda = ArrayList<String>(linkedHashMap.values).get(position)
+        val pais = ArrayList<String>(linkedHashMap.values).get(position)
         with(holder.itemView){
-            txt_nomeMoeda.text = moeda
+            txt_nomeMoeda.text = pais
             txt_codigoMoeda.text = codigo
         }
     }

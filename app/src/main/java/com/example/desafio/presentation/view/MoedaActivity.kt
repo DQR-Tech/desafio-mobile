@@ -1,7 +1,9 @@
 package com.example.desafio.presentation.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.LinearLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,25 +17,42 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MoedaActivity : AppCompatActivity() , OnClickItemMoedaListener{
 
-//    private val moedaViewModel: MoedaViewModel by viewModel()
-    lateinit var moedaViewModel:MoedaViewModel
+    private val moedaViewModel: MoedaViewModel by viewModel()
+    lateinit var moeda:Map<String, String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_moeda)
 
-        val usecase = GetMoeda(MoedaImpl(RetrofitInstance().retrofitInstance()))
-        moedaViewModel = ViewModelProvider(this, MoedaViewModel.viewModelFactory(usecase)).get(MoedaViewModel::class.java)
+        initView()
+    }
 
+    private fun initView() {
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        getAllMoedas()
+    }
+
+    private fun getAllMoedas() {
         moedaViewModel.getAllMoedas()
         moedaViewModel.moeda.observe(this) { mapMoeda ->
+            moeda = mapMoeda
             val adapter = MoedaAdapter(this, mapMoeda)
             recycler_moeda.layoutManager = LinearLayoutManager(this)
             recycler_moeda.adapter = adapter
+            progressBar_moeda.visibility = View.INVISIBLE
         }
     }
 
     override fun onClick(posicao: Int) {
+        val codigo = ArrayList<String>(moeda.keys).get(posicao)
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("CODIGO_KEY", codigo)
+        startActivity(intent)
+    }
 
+    override fun onSupportNavigateUp(): Boolean {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        return super.onSupportNavigateUp()
     }
 }

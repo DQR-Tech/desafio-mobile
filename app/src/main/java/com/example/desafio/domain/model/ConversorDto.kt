@@ -1,9 +1,8 @@
 package com.example.desafio.domain.model
 
-import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class ConversorDto (
+data class ConversorDto(
     @SerializedName("success")
     val success:Boolean,
     @SerializedName("terms")
@@ -11,9 +10,9 @@ data class ConversorDto (
     @SerializedName("privacy")
     val privacy:String,
     @SerializedName("timestamp")
-    val timestamp:Integer,
+    val timestamp:Int,
     @SerializedName("source")
     val source:String,
     @SerializedName("quotes")
-    val moeda:Map<String, Double>
+    val moeda: MutableMap<String, Double>?
 )

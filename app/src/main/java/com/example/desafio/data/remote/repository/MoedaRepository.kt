@@ -24,13 +24,23 @@ class MoedaImpl(
         }
     }
 
-    override suspend fun getMoeda() : ConversorDto {
-        TODO("Not yet implemented")
+    override suspend fun getSearchMoeda(codigoMoedas:String) : ConversorDto {
+        return withContext(Dispatchers.Default){
+            val response = apiService.getSearchMoeda(codigoMoeda = codigoMoedas)
+
+            if(response.isSuccessful)
+                response.body()!!
+            else{
+                Log.d("TAG", "Error: ${response.errorBody()} ")
+                Log.d("TAG", "Code: ${response.code()} ")
+                ConversorDto(false, "","",0, "", null)
+            }
+        }
     }
 
 }
 
 interface MoedaRepository {
     suspend fun getAllMoedas() : MoedasDto
-    suspend fun getMoeda() : ConversorDto
+    suspend fun getSearchMoeda(codigoMoedas:String) : ConversorDto
 }
