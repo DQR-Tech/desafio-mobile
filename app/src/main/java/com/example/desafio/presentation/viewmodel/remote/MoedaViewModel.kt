@@ -1,30 +1,31 @@
-package com.example.desafio.presentation.viewmodel
+package com.example.desafio.presentation.viewmodel.remote
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.desafio.domain.usecase.ConversorUsecase
+import com.example.desafio.domain.model.MoedasDto
+import com.example.desafio.domain.usecase.MoedaUsecase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ConversorViewModel(
-    val conversorUsecase: ConversorUsecase
+class MoedaViewModel(
+    val moedaUsecase: MoedaUsecase
 ) : ViewModel() {
 
-    private var mMoeda = MutableLiveData<Map<String, Double>>()
+    private var mMoeda = MutableLiveData<MoedasDto>()
 
-    val moeda: LiveData<Map<String, Double>>
+    val moeda:LiveData<MoedasDto>
         get() = mMoeda
 
-    fun getSearchMoedas(){
+    fun getAllMoedas(){
         CoroutineScope(Dispatchers.Main).launch {
             val moedas = withContext(Dispatchers.Default){
-                conversorUsecase.invoke().moedas
+                moedaUsecase.invoke()
             }
 
-            if(!moedas.isNullOrEmpty())
+            if(!moedas.moedas.isNullOrEmpty())
                 mMoeda.value = moedas
 
         }

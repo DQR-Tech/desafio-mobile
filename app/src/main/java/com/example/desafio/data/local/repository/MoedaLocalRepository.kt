@@ -7,6 +7,7 @@ import com.example.desafio.domain.model.MoedasDto
 class MoedaDataSource(
     private val moedaDao: MoedaDao
 ) : MoedaLocalRepository{
+
     override suspend fun insertMoeda(moedasDto: MoedasDto): Long {
         val entity = MoedaEntity(
             moedas = moedasDto.moedas!!.toString(),
@@ -27,7 +28,6 @@ class MoedaDataSource(
 }
 
 interface MoedaLocalRepository {
-
     suspend fun insertMoeda(moedasDto: MoedasDto) : Long
 
     suspend fun validarMoeda(moedas : Map<String, String>) : MoedaEntity

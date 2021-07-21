@@ -8,8 +8,8 @@ import com.example.desafio.domain.usecase.ConversorUsecase
 import com.example.desafio.domain.usecase.GetConversor
 import com.example.desafio.domain.usecase.GetMoeda
 import com.example.desafio.domain.usecase.MoedaUsecase
-import com.example.desafio.presentation.viewmodel.ConversorViewModel
-import com.example.desafio.presentation.viewmodel.MoedaViewModel
+import com.example.desafio.presentation.viewmodel.remote.ConversorViewModel
+import com.example.desafio.presentation.viewmodel.remote.MoedaViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

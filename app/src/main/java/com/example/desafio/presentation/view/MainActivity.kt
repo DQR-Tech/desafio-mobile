@@ -7,7 +7,7 @@ import android.view.View
 import androidx.core.widget.addTextChangedListener
 import com.example.desafio.R
 import com.example.desafio.presentation.view.moeda.MoedaActivity
-import com.example.desafio.presentation.viewmodel.ConversorViewModel
+import com.example.desafio.presentation.viewmodel.remote.ConversorViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
