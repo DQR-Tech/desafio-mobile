@@ -4,9 +4,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "moeda")
-class MoedaEntity (
+data class MoedaEntity (
 
-    @PrimaryKey(autoGenerate = true) val id:Long = 0,
+    @PrimaryKey(autoGenerate = false) val id:Long = 1,
     val moedas: String,
     val success:Boolean,
     val terms:String,

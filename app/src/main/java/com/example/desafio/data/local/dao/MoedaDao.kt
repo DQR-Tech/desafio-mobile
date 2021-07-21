@@ -11,9 +11,12 @@ interface MoedaDao {
     @Insert
     suspend fun insertMoeda(moedaEntity: MoedaEntity) : Long
 
-    @Query("SELECT * FROM moeda WHERE moedas=:moedas")
-    suspend fun validarMoeda(moedas : String) : MoedaEntity
+    @Query("SELECT * FROM moeda WHERE id=1")
+    fun verificarMoeda() : Boolean
 
-    @Query("DELETE FROM moeda WHERE moedas =:moedas")
-    suspend fun deleteMoedas(moedas : String)
+    @Query("SELECT * FROM moeda WHERE id=1")
+    fun selectMoeda() : MoedaEntity
+
+    @Query("DELETE FROM moeda WHERE id = 1")
+    suspend fun deleteMoedas()
 }

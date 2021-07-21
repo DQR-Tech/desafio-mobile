@@ -3,14 +3,15 @@ package com.example.desafio.data.local.repository
 import com.example.desafio.data.local.dao.MoedaDao
 import com.example.desafio.data.local.entity.MoedaEntity
 import com.example.desafio.domain.model.MoedasDto
+import com.example.desafio.utilis.JsonService
 
 class MoedaDataSource(
     private val moedaDao: MoedaDao
-) : MoedaLocalRepository{
+) : MoedaLocalRepository {
 
     override suspend fun insertMoeda(moedasDto: MoedasDto): Long {
         val entity = MoedaEntity(
-            moedas = moedasDto.moedas!!.toString(),
+            moedas = JsonService.fromJson(moedasDto.moedas!!),
             success = moedasDto.success,
             terms = moedasDto.terms,
             privacy = moedasDto.privacy
@@ -18,19 +19,28 @@ class MoedaDataSource(
         return moedaDao.insertMoeda(entity)
     }
 
-    override suspend fun validarMoeda(moedas: Map<String, String>): MoedaEntity {
-        return moedaDao.validarMoeda(moedas.toString())
+    override fun selectMoeda(): MoedasDto {
+        val entity = moedaDao.selectMoeda()
+        val moedaDto = MoedasDto(
+            success = entity.success,
+            terms = entity.terms,
+            privacy = entity.privacy,
+            moedas = JsonService.fromMoedaMap(entity.moedas)
+        )
+        return moedaDto
     }
 
-    override suspend fun deleteMoedas(moedas: Map<String, String>) {
-        moedaDao.deleteMoedas(moedas.toString())
-    }
+    override fun verificarMoeda(): Boolean = moedaDao.verificarMoeda()
+
+    override suspend fun deleteMoedas() = moedaDao.deleteMoedas()
 }
 
 interface MoedaLocalRepository {
     suspend fun insertMoeda(moedasDto: MoedasDto) : Long
 
-    suspend fun validarMoeda(moedas : Map<String, String>) : MoedaEntity
+    fun selectMoeda() : MoedasDto
 
-    suspend fun deleteMoedas(moedas : Map<String, String>)
+    fun verificarMoeda() : Boolean
+
+    suspend fun deleteMoedas()
 }
