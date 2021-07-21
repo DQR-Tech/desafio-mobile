@@ -10,14 +10,14 @@ import com.example.desafio.data.local.entity.MoedaEntity
 interface ConversorDao {
 
     @Insert
-    suspend fun insertMoeda(conversorEntity: ConversorEntity) : Long
+    suspend fun insertConversor(conversorEntity: ConversorEntity) : Long
 
     @Query("SELECT * FROM conversor WHERE id=1")
-    fun verificarMoeda() : Boolean
+    fun verificarConversor() : Boolean
 
     @Query("SELECT * FROM conversor WHERE id=1")
-    fun selectMoeda() : ConversorEntity
+    fun selectConversor() : ConversorEntity
 
     @Query("DELETE FROM conversor WHERE id = 1")
-    suspend fun deleteMoedas()
+    suspend fun deleteConversor()
 }

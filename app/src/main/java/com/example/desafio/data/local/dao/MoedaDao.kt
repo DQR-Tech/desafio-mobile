@@ -18,5 +18,5 @@ interface MoedaDao {
     fun selectMoeda() : MoedaEntity
 
     @Query("DELETE FROM moeda WHERE id = 1")
-    suspend fun deleteMoedas()
+    suspend fun deleteMoeda()
 }

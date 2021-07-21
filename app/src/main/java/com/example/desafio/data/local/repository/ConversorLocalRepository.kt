@@ -8,6 +8,7 @@ import com.example.desafio.utilis.JsonService
 class ConversorDataSource(
     val conversorDao: ConversorDao
 ) : ConversorLocalRepository{
+
     override suspend fun insertConversor(conversorDto: ConversorDto): Long {
         val entity = ConversorEntity(
             moedas = JsonService.fromJsonConversor(conversorDto.moedas!!),
@@ -17,11 +18,11 @@ class ConversorDataSource(
             timestamp = conversorDto.timestamp,
             source = conversorDto.source
         )
-        return conversorDao.insertMoeda(entity)
+        return conversorDao.insertConversor(entity)
     }
 
     override fun selectConversor(): ConversorDto {
-        val entity = conversorDao.selectMoeda()
+        val entity = conversorDao.selectConversor()
         val moedaDto = ConversorDto(
             moedas = JsonService.fromJsonConversor(entity.moedas),
             success = entity.success,
@@ -33,9 +34,9 @@ class ConversorDataSource(
         return moedaDto
     }
 
-    override fun verificarConversor(): Boolean = conversorDao.verificarMoeda()
+    override fun verificarConversor(): Boolean = conversorDao.verificarConversor()
 
-    override suspend fun deleteConversor() = conversorDao.deleteMoedas()
+    override suspend fun deleteConversor() = conversorDao.deleteConversor()
 
 }
 

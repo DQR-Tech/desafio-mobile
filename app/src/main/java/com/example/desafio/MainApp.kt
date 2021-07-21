@@ -18,7 +18,10 @@ class MainApp : Application() {
             androidLogger(Level.INFO)
             androidContext(this@MainApp)
             modules(
-                listOf(RemotoModule, LocalModule)
+                listOf(
+                    RemotoModule,
+                    LocalModule
+                )
             )
         }
     }

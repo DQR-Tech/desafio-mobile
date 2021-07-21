@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Desafio</string>
-    <string name="codigo_key">CODIGO_KEY</string>
+    <string name="key_destino">KEY_DESTINO</string>
+    <string name="key_origem">KEY_ORIGEM</string>
 
     <string name="nome_moeda">Nome da Moeda</string>
     <string name="codigo_moeda">Codigo da Moeda</string>

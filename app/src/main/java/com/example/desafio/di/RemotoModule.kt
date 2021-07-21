@@ -15,7 +15,7 @@ import org.koin.dsl.module
 
 val RemotoModule = module {
     // pegando a ApiService e o repository
-    single { RetrofitInstance().retrofitInstance() as ApiService }
+    single { RetrofitInstance.retrofitInstance() as ApiService }
     single { MoedaImpl(apiService = get()) as MoedaRepository }
 
     //moeda

@@ -3,18 +3,17 @@ package com.example.desafio.presentation.view.moeda
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.desafio.R
 import com.example.desafio.domain.model.MoedasDto
 import com.example.desafio.presentation.view.MainActivity
-import com.example.desafio.presentation.viewmodel.local.DeleteViewModel
-import com.example.desafio.presentation.viewmodel.local.InsertViewModel
-import com.example.desafio.presentation.viewmodel.local.SelectViewModel
-import com.example.desafio.presentation.viewmodel.local.VerificarViewModel
+import com.example.desafio.presentation.viewmodel.local.moeda.DeleteViewModel
+import com.example.desafio.presentation.viewmodel.local.moeda.InsertViewModel
+import com.example.desafio.presentation.viewmodel.local.moeda.SelectViewModel
+import com.example.desafio.presentation.viewmodel.local.moeda.VerificarViewModel
 import com.example.desafio.presentation.viewmodel.remote.MoedaViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_moeda.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -80,9 +79,7 @@ class MoedaActivity : AppCompatActivity() , OnClickItemMoedaListener {
     }
 
     override fun onClick(posicao: Int) {
-        val codigo = ArrayList<String>(moedaDto.moedas!!.keys)[posicao]
         val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra(R.string.codigo_key.toString(), codigo)
         startActivity(intent)
     }
 

@@ -1,4 +1,4 @@
-package com.example.desafio.presentation.viewmodel.local
+package com.example.desafio.presentation.viewmodel.local.moeda
 
 import android.util.Log
 import androidx.lifecycle.LiveData

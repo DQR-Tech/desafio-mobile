@@ -6,12 +6,12 @@ import com.google.gson.reflect.TypeToken
 class JsonService {
 
     companion object{
-        fun fromMoedaMap(map : String) : Map<String, String>{
+        fun fromMoedaMap(map : String) : MutableMap<String, String>{
             val turnsType = object  : TypeToken<Map<String, String>>() {}.type
             return Gson().fromJson(map, turnsType)
         }
 
-        fun fromJsonMoeda(mapMoedas : Map<String, String>) : String = Gson().toJson(mapMoedas)
+        fun fromJsonMoeda(mapMoedas : MutableMap<String, String>) : String = Gson().toJson(mapMoedas)
 
 
         fun fromJsonConversor(map : String) : MutableMap<String, Double>{

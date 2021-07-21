@@ -32,7 +32,7 @@ class MoedaDataSource(
 
     override fun verificarMoeda(): Boolean = moedaDao.verificarMoeda()
 
-    override suspend fun deleteMoedas() = moedaDao.deleteMoedas()
+    override suspend fun deleteMoedas() = moedaDao.deleteMoeda()
 }
 
 interface MoedaLocalRepository {

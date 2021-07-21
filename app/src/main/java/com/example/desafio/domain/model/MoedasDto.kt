@@ -13,5 +13,5 @@ data class MoedasDto(
     val privacy:String,
 
     @SerializedName("currencies")
-    val moedas: Map<String, String>?
+    val moedas: MutableMap<String, String>?
 )

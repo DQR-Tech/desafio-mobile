@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:padding="8dp"
     tools:context=".presentation.view.MainActivity">
 
     <LinearLayout
@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="8dp">
 
         <EditText
             android:id="@+id/edt_valor"
@@ -54,30 +55,46 @@
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
+        android:inputType="none"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
-        <EditText
-            android:id="@+id/edt_origem"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_weight="1"
-            android:hint="@string/origem"
-            android:maxLength="3"
-            android:text="BRL"/>
 
-        <EditText
-            android:id="@+id/edt_destino"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="2dp"
             android:layout_weight="1"
-            android:hint="@string/destino"
-            android:maxLength="3"
-            android:text="PEN"/>
+            app:endIconMode="dropdown_menu">
+
+            <AutoCompleteTextView
+                android:id="@+id/autoComplete_origem"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/origem"
+                android:maxLength="3" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dp"
+            android:layout_weight="1"
+            app:endIconMode="dropdown_menu">
+
+            <AutoCompleteTextView
+                android:id="@+id/autoComplete_destino"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/destino"
+                android:maxLength="3" />
+
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

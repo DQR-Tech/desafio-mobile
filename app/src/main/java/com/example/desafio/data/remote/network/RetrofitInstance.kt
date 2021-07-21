@@ -6,9 +6,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitInstance {
 
-    private fun getRetrofit() : Retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create())
-        .build()
+    companion object{
+        private fun getRetrofit() : Retrofit = Retrofit.Builder()
+            .baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create())
+            .build()
 
-    fun retrofitInstance() = getRetrofit().create(ApiService::class.java)
+        fun retrofitInstance() = getRetrofit().create(ApiService::class.java)
+    }
 }
