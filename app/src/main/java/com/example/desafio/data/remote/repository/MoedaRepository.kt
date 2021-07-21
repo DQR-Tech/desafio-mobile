@@ -25,9 +25,9 @@ class MoedaImpl(
         }
     }
 
-    override suspend fun getSearchMoeda(codigoMoedas:String) : ConversorDto {
+    override suspend fun getSearchMoeda() : ConversorDto {
         return withContext(Dispatchers.Default){
-            val response = apiService.getSearchMoeda(codigoMoeda = codigoMoedas)
+            val response = apiService.getSearchMoeda()
 
             if(response.isSuccessful)
                 response.body()!!
@@ -43,5 +43,5 @@ class MoedaImpl(
 interface MoedaRepository {
     suspend fun getAllMoedas() : MoedasDto
 
-    suspend fun getSearchMoeda(codigoMoedas:String) : ConversorDto
+    suspend fun getSearchMoeda() : ConversorDto
 }

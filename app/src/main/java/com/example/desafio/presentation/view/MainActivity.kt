@@ -26,8 +26,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        val bundle = intent.getStringExtra(R.string.codigo_key.toString())
-        if(bundle != null) edt_destino.setText(bundle.toString())
+        val codigo = intent.getStringExtra(R.string.codigo_key.toString())
+        if(codigo != null) edt_destino.setText(codigo.toString())
+
         searchMoeda()
         setupViewModel()
     }
@@ -37,13 +38,13 @@ class MainActivity : AppCompatActivity() {
             if(!it.isNullOrBlank()){
                 valor = it.toString().toDouble()
                 if(edt_origem.length() > 2 && edt_destino.length() > 2)
-                    conversorViewModel.getSearchMoedas("${edt_destino.text},${edt_origem.text}")
+                    conversorViewModel.getSearchMoedas()
             }
         }
     }
     
     private fun setupViewModel() {
-        /* Com o plano Free não pode converter diretamente os valores apenas em Dolar, então...
+        /* Com o plano Free não pode converter diretamente os valores, apenas em Dolar, então...
         transformei a moeda de origem em dolar e mutipliquei pelo destino (Resumindo Fiz uma regra de 3) */
 
         conversorViewModel.moeda.observe(this) { mapMoeda ->

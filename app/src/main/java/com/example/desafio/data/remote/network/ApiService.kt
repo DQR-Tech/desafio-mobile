@@ -16,7 +16,6 @@ interface ApiService {
 
     @GET("api/live")
     suspend fun getSearchMoeda(
-        @Query("access_key") chaveUsuario:String = USER_KEY,
-        @Query("currencies") codigoMoeda:String
+        @Query("access_key") chaveUsuario:String = USER_KEY
     ) : Response<ConversorDto>
 }

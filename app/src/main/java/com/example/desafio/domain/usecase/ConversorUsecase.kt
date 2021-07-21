@@ -7,8 +7,8 @@ import com.example.desafio.domain.model.ConversorDto
 class GetConversor(
     val moedaRepository: MoedaRepository
 ) : ConversorUsecase{
-    override suspend fun invoke(codigoMoedas:String): ConversorDto = try {
-        moedaRepository.getSearchMoeda(codigoMoedas)
+    override suspend fun invoke(): ConversorDto = try {
+        moedaRepository.getSearchMoeda()
     }catch (ex:Exception){
         Log.d("TAG", "invoke: $ex")
         ConversorDto(false, "","",0, "", null)
@@ -17,5 +17,5 @@ class GetConversor(
 }
 
 interface ConversorUsecase {
-    suspend operator fun invoke(codigoMoedas:String): ConversorDto
+    suspend operator fun invoke(): ConversorDto
 }

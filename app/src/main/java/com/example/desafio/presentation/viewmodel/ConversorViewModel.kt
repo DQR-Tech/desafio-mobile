@@ -18,10 +18,10 @@ class ConversorViewModel(
     val moeda: LiveData<Map<String, Double>>
         get() = mMoeda
 
-    fun getSearchMoedas(codigoMoedas:String){
+    fun getSearchMoedas(){
         CoroutineScope(Dispatchers.Main).launch {
             val moedas = withContext(Dispatchers.Default){
-                conversorUsecase.invoke(codigoMoedas).moedas
+                conversorUsecase.invoke().moedas
             }
 
             if(!moedas.isNullOrEmpty())
