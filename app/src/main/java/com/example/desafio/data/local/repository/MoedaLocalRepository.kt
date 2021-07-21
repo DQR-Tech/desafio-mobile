@@ -11,7 +11,7 @@ class MoedaDataSource(
 
     override suspend fun insertMoeda(moedasDto: MoedasDto): Long {
         val entity = MoedaEntity(
-            moedas = JsonService.fromJson(moedasDto.moedas!!),
+            moedas = JsonService.fromJsonMoeda(moedasDto.moedas!!),
             success = moedasDto.success,
             terms = moedasDto.terms,
             privacy = moedasDto.privacy

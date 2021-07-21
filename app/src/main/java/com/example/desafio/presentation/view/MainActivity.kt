@@ -26,19 +26,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        val codigo = intent.getStringExtra(R.string.codigo_key.toString())
-        if(codigo != null) edt_destino.setText(codigo.toString())
-
         searchMoeda()
         setupViewModel()
     }
 
     private fun searchMoeda() {
+        val codigo = intent.getStringExtra(R.string.codigo_key.toString())
+        if(codigo != null) edt_destino.setText(codigo.toString())
+
         edt_valor.addTextChangedListener {
             if(!it.isNullOrBlank()){
                 valor = it.toString().toDouble()
-                if(edt_origem.length() > 2 && edt_destino.length() > 2)
-                    conversorViewModel.getSearchMoedas()
+//                if(edt_origem.length() > 2 && edt_destino.length() > 2)
+//                    conversorViewModel.getSearchMoedas()
             }
         }
     }
@@ -48,7 +48,11 @@ class MainActivity : AppCompatActivity() {
         transformei a moeda de origem em dolar e mutipliquei pelo destino (Resumindo Fiz uma regra de 3) */
 
         conversorViewModel.moeda.observe(this) { mapMoeda ->
-            mapMoeda.forEach { moeda ->
+            //verificar
+            //insert ou delete
+            //select
+
+            mapMoeda.moedas!!.forEach { moeda ->
                 if(moeda.key == "USD${edt_origem.text}") valorOrigem = 1/moeda.value
                 if(moeda.key == "USD${edt_destino.text}") valorDestino = moeda.value
             }

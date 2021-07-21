@@ -11,6 +11,14 @@ class JsonService {
             return Gson().fromJson(map, turnsType)
         }
 
-        fun fromJson(mapMoedas : Map<String, String>) : String = Gson().toJson(mapMoedas)
+        fun fromJsonMoeda(mapMoedas : Map<String, String>) : String = Gson().toJson(mapMoedas)
+
+
+        fun fromJsonConversor(map : String) : MutableMap<String, Double>{
+            val turnsType = object  : TypeToken<Map<String, Double>>() {}.type
+            return Gson().fromJson(map, turnsType)
+        }
+
+        fun fromJsonConversor(mapMoedas : MutableMap<String, Double>) : String = Gson().toJson(mapMoedas)
     }
 }

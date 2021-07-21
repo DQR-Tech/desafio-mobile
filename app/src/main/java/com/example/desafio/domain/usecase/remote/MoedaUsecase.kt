@@ -1,4 +1,4 @@
-package com.example.desafio.domain.usecase
+package com.example.desafio.domain.usecase.remote
 
 import android.util.Log
 import com.example.desafio.data.remote.repository.MoedaRepository
@@ -6,7 +6,7 @@ import com.example.desafio.domain.model.MoedasDto
 
 class GetMoeda(
     val moedaRepository: MoedaRepository
-):MoedaUsecase{
+): MoedaUsecase {
     override suspend operator fun invoke(): MoedasDto = try{
         moedaRepository.getAllMoedas()
     }catch (ex:Exception){

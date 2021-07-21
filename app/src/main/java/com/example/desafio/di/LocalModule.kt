@@ -14,16 +14,23 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val LocalModule = module {
-    viewModel { InsertViewModel(insertImpl = get()) }
-    viewModel { VerificarViewModel(verificarUseCase = get()) }
-    viewModel { DeleteViewModel(deleteMovieUseCase = get()) }
-    viewModel { SelectViewModel(selectUseCase = get()) }
-
+    //pegando o moedaDao e repository
     single { MoedaDatabase.getInstance(androidContext()).moedaDao as MoedaDao}
-
     single { MoedaDataSource(moedaDao = get()) as MoedaLocalRepository }
+
+    //insert moeda
+    viewModel { InsertViewModel(insertImpl = get()) }
     single { InsertImpl(repository = get()) as InsertUsecase }
+
+    //delete moeda
+    viewModel { DeleteViewModel(deleteMovieUseCase = get()) }
+    single { DeleteImpl(repository = get()) as DeleteUsecase }
+
+    //verificar
+    viewModel { VerificarViewModel(verificarUseCase = get()) }
     single { VerifiacarImpl(repository = get()) as VerificarUsecase }
-    single { DeteteImple(repository = get()) as DeleteUsecase }
+
+    //select
+    viewModel { SelectViewModel(selectUseCase = get()) }
     single { SelectImple(repository = get()) as SelectUsecase }
 }

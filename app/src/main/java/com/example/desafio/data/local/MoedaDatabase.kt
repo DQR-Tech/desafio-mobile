@@ -4,15 +4,18 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
+import com.example.desafio.data.local.dao.ConversorDao
 import com.example.desafio.data.local.dao.MoedaDao
+import com.example.desafio.data.local.entity.ConversorEntity
 import com.example.desafio.data.local.entity.MoedaEntity
 
-@Database(entities = [MoedaEntity::class], version = 2)
+@Database(
+    entities = [MoedaEntity::class, ConversorEntity::class],
+    version = 3)
 abstract class MoedaDatabase : RoomDatabase() {
 
     abstract val moedaDao:MoedaDao
+    abstract val conversorDao:ConversorDao
 
     companion object {
 
