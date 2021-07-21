@@ -21,7 +21,7 @@ class ConversorViewModel(
     fun getSearchMoedas(codigoMoedas:String){
         CoroutineScope(Dispatchers.Main).launch {
             val moedas = withContext(Dispatchers.Default){
-                conversorUsecase.invoke(codigoMoedas).moeda
+                conversorUsecase.invoke(codigoMoedas).moedas
             }
 
             if(!moedas.isNullOrEmpty())

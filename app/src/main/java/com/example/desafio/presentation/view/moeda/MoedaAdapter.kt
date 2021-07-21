@@ -1,4 +1,4 @@
-package com.example.desafio.presentation.view
+package com.example.desafio.presentation.view.moeda
 
 import android.view.LayoutInflater
 import android.view.View
@@ -18,11 +18,9 @@ class MoedaAdapter(
     }
 
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
-        val codigo = ArrayList<String>(linkedHashMap.keys).get(position)
-        val pais = ArrayList<String>(linkedHashMap.values).get(position)
         with(holder.itemView){
-            txt_nomeMoeda.text = pais
-            txt_codigoMoeda.text = codigo
+            txt_nomeMoeda.text = ArrayList<String>(linkedHashMap.values)[position]
+            txt_codigoMoeda.text = ArrayList<String>(linkedHashMap.keys)[position]
         }
     }
 

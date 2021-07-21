@@ -1,21 +1,17 @@
-package com.example.desafio.presentation.view
+package com.example.desafio.presentation.view.moeda
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.desafio.R
-import com.example.desafio.data.remote.network.RetrofitInstance
-import com.example.desafio.data.remote.repository.MoedaImpl
-import com.example.desafio.domain.usecase.GetMoeda
+import com.example.desafio.presentation.view.MainActivity
 import com.example.desafio.presentation.viewmodel.MoedaViewModel
 import kotlinx.android.synthetic.main.activity_moeda.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MoedaActivity : AppCompatActivity() , OnClickItemMoedaListener{
+class MoedaActivity : AppCompatActivity() , OnClickItemMoedaListener {
 
     private val moedaViewModel: MoedaViewModel by viewModel()
     lateinit var moeda:Map<String, String>
@@ -28,8 +24,13 @@ class MoedaActivity : AppCompatActivity() , OnClickItemMoedaListener{
     }
 
     private fun initView() {
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        setupToolbar()
         getAllMoedas()
+    }
+
+    private fun setupToolbar() {
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "Lista de Moedas"
     }
 
     private fun getAllMoedas() {
@@ -46,7 +47,7 @@ class MoedaActivity : AppCompatActivity() , OnClickItemMoedaListener{
     override fun onClick(posicao: Int) {
         val codigo = ArrayList<String>(moeda.keys).get(posicao)
         val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("CODIGO_KEY", codigo)
+        intent.putExtra(R.string.codigo_key.toString(), codigo)
         startActivity(intent)
     }
 

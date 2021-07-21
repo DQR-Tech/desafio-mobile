@@ -14,5 +14,5 @@ data class ConversorDto(
     @SerializedName("source")
     val source:String,
     @SerializedName("quotes")
-    val moeda: MutableMap<String, Double>?
+    val moedas: MutableMap<String, Double>?
 )

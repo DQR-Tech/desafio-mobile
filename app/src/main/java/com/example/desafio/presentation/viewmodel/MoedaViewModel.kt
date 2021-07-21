@@ -11,7 +11,7 @@ import kotlinx.coroutines.withContext
 
 class MoedaViewModel(
     val moedaUsecase: MoedaUsecase
-): ViewModel() {
+) : ViewModel() {
 
     private var mMoeda = MutableLiveData<Map<String, String>>()
 

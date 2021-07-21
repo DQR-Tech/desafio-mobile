@@ -10,6 +10,7 @@ import kotlinx.coroutines.withContext
 class MoedaImpl(
     val apiService: ApiService
 ): MoedaRepository {
+
     override suspend fun getAllMoedas() : MoedasDto {
         return withContext(Dispatchers.Default){
             val response = apiService.getAllMoeda()
@@ -37,10 +38,10 @@ class MoedaImpl(
             }
         }
     }
-
 }
 
 interface MoedaRepository {
     suspend fun getAllMoedas() : MoedasDto
+
     suspend fun getSearchMoeda(codigoMoedas:String) : ConversorDto
 }

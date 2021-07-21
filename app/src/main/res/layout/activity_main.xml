@@ -19,19 +19,19 @@
             android:id="@+id/edt_valor"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_weight="1"
-            android:hint="Digite o valor"
+            android:hint="@string/digite_valor"
             android:inputType="numberDecimal" />
 
         <TextView
             android:id="@+id/txt_valor"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Valor"
+            android:text="@string/valor"
             android:textSize="18sp"
             android:textStyle="bold"
             android:typeface="monospace" />
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:gravity="center"
-        android:text="Escolhe as Moedas"
+        android:text="@string/escolhe_moedas"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,32 +63,28 @@
             android:id="@+id/edt_origem"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_weight="1"
-            android:hint="Moeda de Origem"
+            android:hint="@string/origem"
             android:maxLength="3"
-            android:text="BRL"
-            android:textAllCaps="true" />
+            android:text="BRL"/>
 
         <EditText
             android:id="@+id/edt_destino"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:layout_weight="1"
-            android:hint="Moeda de Destino"
+            android:hint="@string/destino"
             android:maxLength="3"
-            android:text="BTC"
-            android:textAllCaps="true" />
+            android:text="PEN"/>
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
         android:onClick="onclick"
         android:src="@drawable/ic_baseline_list_alt_24"
-        android:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

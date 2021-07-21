@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.view.MoedaActivity"
+    tools:context=".presentation.view.moeda.MoedaActivity"
     android:background="@color/colorGray">
 
     <androidx.recyclerview.widget.RecyclerView

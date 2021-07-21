@@ -17,8 +17,9 @@ val RemotoModule = module {
     viewModel { MoedaViewModel(moedaUsecase = get()) }
     viewModel { ConversorViewModel(conversorUsecase = get()) }
 
-    single { MoedaImpl(apiService = get()) as MoedaRepository }
+    // pegando a ApiService e o repository
     single { RetrofitInstance().retrofitInstance() as ApiService }
+    single { MoedaImpl(apiService = get()) as MoedaRepository }
 
     //moeda
     single { GetMoeda(moedaRepository = get()) as MoedaUsecase }

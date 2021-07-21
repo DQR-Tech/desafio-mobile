@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Desafio"
         android:usesCleartextTraffic="true">
-        <activity android:name=".presentation.view.MoedaActivity"/>
+        <activity android:name=".presentation.view.moeda.MoedaActivity"/>
         <activity android:name=".presentation.view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
