@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">CoinConversor</string>
+    <string name="no_connection">Não conseguimos obter os dados de conversão. Por favor puxe essa tela para baixo para tentar novamente.</string>
+    <string name="conversor">Conversor</string>
+    <string name="currency_original">Moeda Original</string>
+    <string name="currency_destination">Moeda Destino</string>
+    <string name="value">Valor</string>
+    <string name="result">Resultado</string>
 </resources>
