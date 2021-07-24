@@ -14,4 +14,7 @@
     <string name="convert">Converter</string>
     <string name="retry">Tentar Novamente</string>
     <string name="search_error">Não existem resultados para serem exibidos aqui :/</string>
+    <string name="connection_error">Não foi possível obter as moedas atualizadas. Verifique a sua conexão e tente novamente.</string>
+    <string name="label_currency_name">Nome:</string>
+    <string name="label_currency_code">Código:</string>
 </resources>

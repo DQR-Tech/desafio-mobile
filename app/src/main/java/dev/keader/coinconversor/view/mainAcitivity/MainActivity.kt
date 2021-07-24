@@ -1,6 +1,7 @@
-package dev.keader.coinconversor.view
+package dev.keader.coinconversor.view.mainAcitivity
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.doOnLayout
 import androidx.databinding.DataBindingUtil
@@ -11,6 +12,7 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import dev.keader.coinconversor.R
 import dev.keader.coinconversor.databinding.ActivityMainBinding
+import dev.keader.coinconversor.model.EventObserver
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -18,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     private val navController
         get() = findNavController(R.id.nav_host_fragment)
+    private val uiViewModel: UIViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +29,16 @@ class MainActivity : AppCompatActivity() {
         binding.root.doOnLayout {
             NavigationUI.setupActionBarWithNavController(this, navController)
         }
+
+        uiViewModel.onUpdateDataResponse.observe(this, EventObserver { success ->
+            if (!success)
+                getSnackBarInstance(getString(R.string.connection_error)).show()
+        })
+
+        // Update network data
+        // TODO: Reactive it
+        //uiViewModel.updateData()
+        binding.lifecycleOwner = this
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -33,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    fun getSnackBarInstance(text: String, duration: Int): Snackbar {
-        return Snackbar.make(binding.root, text!!, duration)
+    fun getSnackBarInstance(text: String, duration: Int = Snackbar.LENGTH_LONG): Snackbar {
+        return Snackbar.make(binding.root, text, duration)
     }
 }

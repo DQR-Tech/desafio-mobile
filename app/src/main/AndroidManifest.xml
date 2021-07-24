@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dev.keader.coinconversor">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".CoinConverter"
         android:allowBackup="true"
@@ -9,8 +11,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CoinConverter">
-        <activity android:name=".view.MainActivity">
+        android:theme="@style/Theme.CoinConverter"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".view.mainAcitivity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

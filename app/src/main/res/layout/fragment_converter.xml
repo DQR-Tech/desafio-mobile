@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="convertViewModel"
+            type="dev.keader.coinconversor.view.converter.ConverterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="visible"
-            app:constraint_referenced_ids="ic_banner,card_commands,fab"
+            app:constraint_referenced_ids="ic_banner,card_commands,button_currencies_list"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -73,6 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:onClick="@{() -> convertViewModel.onRetryButtonClick()}"
             android:text="@string/retry"
             android:textColor="@color/secondaryTextColor"
             app:layout_constraintEnd_toEndOf="parent"
@@ -82,9 +85,8 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_commands"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="8dp"
@@ -130,13 +132,13 @@
                     android:hint="@string/value"
                     app:layout_constraintEnd_toStartOf="@+id/guideline"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/label_conversor"
-                    app:prefixText="$">
+                    app:layout_constraintTop_toBottomOf="@+id/label_conversor">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="numberDecimal" />
+                        android:inputType="numberDecimal"
+                        android:text="@={convertViewModel.convertValue}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -151,8 +153,7 @@
                     android:hint="@string/result"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guideline"
-                    app:layout_constraintTop_toBottomOf="@+id/label_conversor"
-                    app:prefixText="$">
+                    app:layout_constraintTop_toBottomOf="@+id/label_conversor">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
@@ -161,7 +162,8 @@
                         android:cursorVisible="false"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
-                        android:inputType="numberDecimal" />
+                        android:inputType="numberDecimal"
+                        android:text="@{convertViewModel.result}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -183,6 +185,8 @@
                         android:id="@+id/spinner_input_origin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:text="@={convertViewModel.originalCoin}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -207,17 +211,33 @@
                         android:id="@+id/spinner_input_destination"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:text="@={convertViewModel.destinationCoin}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/progress_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_input_destination" />
+
                 <Button
                     android:id="@+id/button_convert"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:enabled="@{convertViewModel.buttonEnabled}"
+                    android:onClick="@{() -> convertViewModel.onConvertButtonClick()}"
                     android:text="@string/convert"
                     android:textColor="@color/secondaryTextColor"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -228,15 +248,18 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/fab"
+        <Button
+            android:id="@+id/button_currencies_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="32dp"
-            android:contentDescription="@string/fab_description"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:onClick="@{() -> convertViewModel.onListButtonClick()}"
             android:text="@string/currencies_list"
+            android:textColor="@color/secondaryTextColor"
+            app:backgroundTint="@color/secondaryColor"
             app:icon="@drawable/ic_list"
+            app:iconTint="@color/secondaryTextColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

@@ -7,6 +7,7 @@ import dev.keader.coinconversor.network.CurrencyLayerService
 import dev.keader.coinconversor.network.model.CurrencyDTO
 import dev.keader.coinconversor.network.model.ExchangeDTO
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 import javax.inject.Inject
@@ -21,9 +22,13 @@ class CoinConverterRepository @Inject constructor(
         return withContext(Dispatchers.IO) {
             try {
                 val exchangeDTO = currencyLayerService.getExchanges()
+                // Yes folks, free api return success = false if we do it too fast
+                delay(2000L)
                 val currencyDTO = currencyLayerService.getCurrencies()
-                if (!validateDTOs(exchangeDTO, currencyDTO))
+                if (!validateDTOs(exchangeDTO, currencyDTO)) {
+                    Timber.e("DTO with invalid data")
                     return@withContext false
+                }
 
                 val exchanges = DatabaseUtil.convertExchangeDTO(exchangeDTO)
                 val currencies = DatabaseUtil.convertCurrencyDTO(currencyDTO)

@@ -6,13 +6,13 @@
     <fragment
         android:id="@+id/converterFragment"
         android:name="dev.keader.coinconversor.view.converter.ConverterFragment"
-        android:label="ConverterFragment" >
+        android:label="Conversor" >
         <action
-            android:id="@+id/action_converterFragment_to_currenciesFragment"
+            android:id="@+id/to_currenciesFragment"
             app:destination="@id/currenciesFragment" />
     </fragment>
     <fragment
         android:id="@+id/currenciesFragment"
         android:name="dev.keader.coinconversor.view.currencies.CurrenciesFragment"
-        android:label="CurrenciesFragment" />
+        android:label="Lista" />
 </navigation>

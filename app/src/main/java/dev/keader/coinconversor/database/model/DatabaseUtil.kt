@@ -5,7 +5,7 @@ import dev.keader.coinconversor.network.model.ExchangeDTO
 
 object DatabaseUtil {
 
-    fun convertCurrencyDTO(currencyDTO: CurrencyDTO) : List<Currency> {
+    fun convertCurrencyDTO(currencyDTO: CurrencyDTO): List<Currency> {
         val currencies = mutableListOf<Currency>()
         currencyDTO.currencies.forEach { (code, name) ->
             currencies.add(Currency(0, code, name))
@@ -13,10 +13,13 @@ object DatabaseUtil {
         return currencies
     }
 
-    fun convertExchangeDTO(exchangeDTO: ExchangeDTO) : List<Exchange> {
+    fun convertExchangeDTO(exchangeDTO: ExchangeDTO): List<Exchange> {
         val exchanges = mutableListOf<Exchange>()
         exchangeDTO.quotes.forEach { (code, value) ->
-            val coinCode = code.replace(exchangeDTO.source, "")
+            var coinCode = code.replace(exchangeDTO.source, "")
+            // Removing "USD" of "USDUSD" result into a empty string
+            if (coinCode.isEmpty())
+                coinCode = exchangeDTO.source
             exchanges.add(Exchange(0, coinCode, value))
         }
         return exchanges

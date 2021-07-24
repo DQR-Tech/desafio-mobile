@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="currency"
+            type="dev.keader.coinconversor.database.model.Currency" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -30,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Nome:"
+                android:text="@string/label_currency_name"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -44,6 +46,7 @@
                 android:layout_marginEnd="8dp"
                 android:textColor="@color/primaryDarkColor"
                 android:textSize="16sp"
+                android:text="@{currency.name}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/label_name"
                 app:layout_constraintTop_toTopOf="parent"
@@ -57,6 +60,7 @@
                 android:layout_marginBottom="8dp"
                 android:textColor="@color/primaryDarkColor"
                 android:textSize="16sp"
+                android:text="@{currency.code}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/content_name"
                 app:layout_constraintStart_toStartOf="@+id/content_name"
@@ -70,9 +74,9 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:textSize="16sp"
+                android:text="@string/label_currency_code"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/content_name"
-                tools:text="Código:" />
+                app:layout_constraintTop_toBottomOf="@+id/content_name" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
