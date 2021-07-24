@@ -1,10 +1,7 @@
 package dev.keader.coinconversor.database.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import dev.keader.coinconversor.database.model.Currency
 
 @Dao
@@ -14,9 +11,6 @@ interface CurrencyDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(currencies: List<Currency>)
-
-    @Query("SELECT * FROM Currency")
-    fun getAllCurrencies() : LiveData<List<Currency>>
 
     @Query("SELECT * FROM Currency ORDER BY name ASC")
     fun getAllCurrenciesOrderByName() : LiveData<List<Currency>>
@@ -30,4 +24,10 @@ interface CurrencyDAO {
 
     @Query("DELETE FROM Currency")
     suspend fun clearCurrencies()
+
+    @Transaction
+    suspend fun clearAndInsert(currencies: List<Currency>) {
+        clearCurrencies()
+        insert(currencies)
+    }
 }

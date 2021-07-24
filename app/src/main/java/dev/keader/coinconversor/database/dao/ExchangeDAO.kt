@@ -1,10 +1,7 @@
 package dev.keader.coinconversor.database.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import dev.keader.coinconversor.database.model.Exchange
 
 @Dao
@@ -20,4 +17,10 @@ interface ExchangeDAO {
 
     @Query("DELETE FROM Exchange")
     suspend fun clearExchanges()
+
+    @Transaction
+    suspend fun clearAndInsert(exchanges: List<Exchange>) {
+        clearExchanges()
+        insert(exchanges)
+    }
 }
