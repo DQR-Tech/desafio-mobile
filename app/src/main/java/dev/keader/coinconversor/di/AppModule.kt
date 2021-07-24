@@ -12,8 +12,9 @@ import dagger.hilt.components.SingletonComponent
 import dev.keader.coinconversor.BuildConfig
 import dev.keader.coinconversor.CoinConverter
 import dev.keader.coinconversor.database.CoinConverterDatabase
-import dev.keader.coinconversor.model.Constants
+import dev.keader.coinconversor.model.Constants.ACCESS_KEY
 import dev.keader.coinconversor.model.Constants.BASE_URL
+import dev.keader.coinconversor.model.Constants.DATABASE_NAME
 import dev.keader.coinconversor.network.CurrencyLayerService
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -40,7 +41,7 @@ object AppModule {
         return Room.databaseBuilder(
             context.applicationContext,
             CoinConverterDatabase::class.java,
-            "coinconverter_db")
+            DATABASE_NAME)
             .build()
     }
 
@@ -81,7 +82,7 @@ object AppModule {
             .build()
 
         val url = request.url.newBuilder()
-            .addQueryParameter("access_key", Constants.ACCESS_KEY)
+            .addQueryParameter("access_key", ACCESS_KEY)
             .build()
 
         val newRequest = request.newBuilder().url(url).headers(headers).build()
