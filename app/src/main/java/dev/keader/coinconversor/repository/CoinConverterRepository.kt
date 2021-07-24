@@ -17,7 +17,7 @@ class CoinConverterRepository @Inject constructor(
     private val currencyLayerService: CurrencyLayerService
 ) {
 
-    suspend fun getUpdatedDataFromNetwork(): Boolean {
+    suspend fun updatedDataFromNetwork(): Boolean {
         return withContext(Dispatchers.IO) {
             try {
                 val exchangeDTO = currencyLayerService.getExchanges()
@@ -27,13 +27,13 @@ class CoinConverterRepository @Inject constructor(
 
                 val exchanges = DatabaseUtil.convertExchangeDTO(exchangeDTO)
                 val currencies = DatabaseUtil.convertCurrencyDTO(currencyDTO)
-
                 exchangeDAO.clearAndInsert(exchanges)
                 currencyDAO.clearAndInsert(currencies)
             } catch (ex: Exception) {
                 Timber.e(ex)
                 return@withContext false
             }
+            Timber.d("Updated data with success")
             return@withContext true
         }
     }
@@ -45,4 +45,16 @@ class CoinConverterRepository @Inject constructor(
             return false
         return true
     }
+
+    fun getAllExchanges() = exchangeDAO.getAllExchanges()
+
+    fun getAllCurrenciesOrderByName() = currencyDAO.getAllCurrenciesOrderByName()
+
+    fun getAllCurrenciesOrderByCode() = currencyDAO.getAllCurrenciesOrderByCode()
+
+    fun getCurrenciesBySearchOrderByName(search: String) =
+        currencyDAO.getCurrenciesBySearchOrderByName(search)
+
+    fun getCurrenciesBySearchOrderByCode(search: String) =
+        currencyDAO.getCurrenciesBySearchOrderByCode(search)
 }

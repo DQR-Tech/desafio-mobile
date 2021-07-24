@@ -19,8 +19,11 @@ interface CurrencyDAO {
     fun getAllCurrenciesOrderByCode() : LiveData<List<Currency>>
 
     // || in SQL = String concat
+    @Query("SELECT * FROM Currency WHERE (code LIKE '%' || :search || '%') OR (name LIKE '%' || :search || '%') ORDER BY name ASC")
+    fun getCurrenciesBySearchOrderByName(search: String) : LiveData<List<Currency>>
+
     @Query("SELECT * FROM Currency WHERE (code LIKE '%' || :search || '%') OR (name LIKE '%' || :search || '%') ORDER BY code ASC")
-    fun getAllCurrenciesBySearch(search: String) : LiveData<List<Currency>>
+    fun getCurrenciesBySearchOrderByCode(search: String) : LiveData<List<Currency>>
 
     @Query("DELETE FROM Currency")
     suspend fun clearCurrencies()
