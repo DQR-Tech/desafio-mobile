@@ -1,9 +1,17 @@
 <resources>
-    <string name="app_name">CoinConversor</string>
-    <string name="no_connection">Não conseguimos obter os dados de conversão. Por favor puxe essa tela para baixo para tentar novamente.</string>
+    <string name="app_name">CoinConverter</string>
+    <string name="no_connection">Não conseguimos obter os dados de conversão. Verifique sua conexão com a internet e tente novamente.</string>
     <string name="conversor">Conversor</string>
     <string name="currency_original">Moeda Original</string>
     <string name="currency_destination">Moeda Destino</string>
     <string name="value">Valor</string>
     <string name="result">Resultado</string>
+    <string name="order_by_code">Ordenar por código</string>
+    <string name="order_by_name">Ordenar por nome</string>
+    <string name="search">Busca</string>
+    <string name="currencies_list">Lista de moedas</string>
+    <string name="fab_description">Botão para ir para a lista de moedas</string>
+    <string name="convert">Converter</string>
+    <string name="retry">Tentar Novamente</string>
+    <string name="search_error">Não existem resultados para serem exibidos aqui :/</string>
 </resources>
