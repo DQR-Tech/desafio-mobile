@@ -29,12 +29,8 @@ jobs:
       - name: Dependencies
         run: ./gradlew dependencies
 
-      - name: Publish Release App
-        run: ./gradlew publishReleaseBundle uploadCrashlyticsMappingFileRelease
-        if: "contains(github.event.head_commit.message, '[publish]')"
-        env:
-          APP_KEYSTORE_ALIAS: ${{ secrets.APP_KEYSTORE_ALIAS }}
-          APP_KEYSTORE_PASSWORD: ${{ secrets.APP_KEYSTORE_PASSWORD }}
+      - name: Build App
+        run: ./gradlew bundleRelease
 
       - name: Upload result for job
         uses: actions/upload-artifact@v2

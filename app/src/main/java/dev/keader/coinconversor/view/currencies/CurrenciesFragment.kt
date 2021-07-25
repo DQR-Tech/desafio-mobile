@@ -77,7 +77,7 @@ class CurrenciesFragment : Fragment(){
 
     private fun hideKeyBoard() {
         val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
-        imm?.hideSoftInputFromWindow(binding.root!!.windowToken, 0)
+        imm?.hideSoftInputFromWindow(binding.root.windowToken, 0)
     }
 
     private fun handleWithListVisibility(isEmpty: Boolean) {
