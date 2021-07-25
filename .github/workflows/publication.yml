@@ -29,6 +29,9 @@ jobs:
       - name: Download Dependencies
         run: ./gradlew dependencies
 
+      - name: Run Tests
+          run: ./gradlew check
+
       - name: Build App
         run: ./gradlew bundleRelease
         env:
