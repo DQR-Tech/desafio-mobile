@@ -65,6 +65,13 @@ class ConverterViewModel @Inject constructor(
         _eventRetryClick.value = Event(Unit)
     }
 
+    fun updateResult(value: Double) {
+        if (value > 1000000000)
+            _result.value = String.format("%.3E", value)
+        else
+            _result.value = value.toString()
+    }
+
     fun checkIfNeedShowError() {
         viewModelScope.launch {
             val size = repository.getCurrenciesCount()

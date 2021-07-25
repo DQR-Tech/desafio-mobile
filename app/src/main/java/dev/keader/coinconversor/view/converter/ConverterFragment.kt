@@ -15,9 +15,12 @@ import dagger.hilt.android.AndroidEntryPoint
 import dev.keader.coinconversor.R
 import dev.keader.coinconversor.database.model.Exchange
 import dev.keader.coinconversor.databinding.FragmentConverterBinding
+import dev.keader.coinconversor.model.CurrencyConverter
+import dev.keader.coinconversor.model.CurrencyConverter.Companion.ERROR_VALUE
 import dev.keader.coinconversor.model.EventObserver
 import dev.keader.coinconversor.view.mainAcitivity.MainActivity
 import dev.keader.coinconversor.view.mainAcitivity.UIViewModel
+import timber.log.Timber
 
 @AndroidEntryPoint
 class ConverterFragment : Fragment() {
@@ -27,6 +30,7 @@ class ConverterFragment : Fragment() {
     private val uiViewModel: UIViewModel by activityViewModels()
     private val navController
         get() = findNavController()
+    private val currencyConverter = CurrencyConverter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_converter, container, false)
@@ -36,12 +40,14 @@ class ConverterFragment : Fragment() {
             if (list.isNotEmpty()) {
                 setupSpinners(list)
                 handleWithEmptyData(false)
-                // TODO: Handle with model
+                currencyConverter.updateCurrencyMap(list)
             }
         })
 
         uiViewModel.onUpdateDataResponse.observe(viewLifecycleOwner, EventObserver { success ->
-            if (!success) {
+            if (success) {
+                getSnackBarInstance(getString(R.string.update_success), Snackbar.LENGTH_SHORT).show()
+            } else {
                 converterViewModel.checkIfNeedShowError()
                 getSnackBarInstance(getString(R.string.connection_error)).show()
             }
@@ -60,7 +66,21 @@ class ConverterFragment : Fragment() {
         })
 
         converterViewModel.eventConvertClick.observe(viewLifecycleOwner, EventObserver {
-            // TODO: Handle with click
+            try {
+                val value = converterViewModel.convertValue.value!!.toDouble()
+                val originCurrency = converterViewModel.originalCoin.value!!
+                val destinationCurrency = converterViewModel.destinationCoin.value!!
+                Timber.d("Converting: $value, $originCurrency -> $destinationCurrency")
+                val result = currencyConverter.convert(originCurrency, destinationCurrency, value)
+                if (result == ERROR_VALUE) {
+                    getSnackBarInstance(getString(R.string.convert_error))
+                    uiViewModel.updateData()
+                }
+                else
+                    converterViewModel.updateResult(result)
+            }catch (ex: Exception) {
+                Timber.e(ex)
+            }
         })
 
         setupProgressBar()
@@ -102,11 +122,16 @@ class ConverterFragment : Fragment() {
         binding.spinnerInputOrigin.setAdapter(adapter)
         binding.spinnerInputDestination.setAdapter(adapter)
         // Set default value
-        if (adapterList.contains("USD") && adapterList.contains("BRL")) {
+        if (adapterList.contains(USD) && adapterList.contains(BRL)) {
             if (converterViewModel.originalCoin.value?.isEmpty() == true)
-                converterViewModel.originalCoin.value = "USD"
+                binding.spinnerInputOrigin.setText(USD, false)
             if (converterViewModel.destinationCoin.value?.isEmpty() == true)
-                converterViewModel.destinationCoin.value = "BRL"
+                binding.spinnerInputDestination.setText(BRL, false)
         }
+    }
+
+    companion object {
+        private const val USD = "USD"
+        private const val BRL = "BRL"
     }
 }

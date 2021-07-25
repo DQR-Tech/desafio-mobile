@@ -17,4 +17,6 @@
     <string name="connection_error">Não foi possível obter as moedas atualizadas. Verifique a sua conexão e tente novamente.</string>
     <string name="label_currency_name">Nome:</string>
     <string name="label_currency_code">Código:</string>
+    <string name="convert_error">Houve um erro na conversão das moedas. Estamos atualizando a base de dados, tente novamente em instantes.</string>
+    <string name="update_success">Dados atualizados com sucesso.</string>
 </resources>

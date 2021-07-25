@@ -64,6 +64,9 @@ dependencies {
     kapt "androidx.room:room-compiler:2.3.0"
     implementation "androidx.room:room-ktx:2.3.0"
 
+    // DataStorage
+    implementation("androidx.datastore:datastore-preferences:1.0.0-rc02")
+
     // Timber Logs
     implementation 'com.jakewharton.timber:timber:4.7.1'
 

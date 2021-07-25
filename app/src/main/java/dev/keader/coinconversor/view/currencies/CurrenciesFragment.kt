@@ -11,13 +11,12 @@ import android.view.inputmethod.InputMethodManager
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Transformations
 import dagger.hilt.android.AndroidEntryPoint
 import dev.keader.coinconversor.R
 import dev.keader.coinconversor.databinding.FragmentCurrenciesBinding
+import dev.keader.coinconversor.model.distinctUntilChanged
 import dev.keader.coinconversor.model.removeOldEvents
 import dev.keader.coinconversor.view.adapters.CurrencyAdapter
-
 
 @AndroidEntryPoint
 class CurrenciesFragment : Fragment(){
@@ -44,8 +43,7 @@ class CurrenciesFragment : Fragment(){
             }
         })
 
-        val listLiveData = Transformations.distinctUntilChanged(currenciesViewModel.currenciesList)
-        listLiveData.observe(viewLifecycleOwner, { list ->
+        currenciesViewModel.currenciesList.distinctUntilChanged().observe(viewLifecycleOwner, { list ->
             handleWithListVisibility(list.isEmpty())
             if (list.isNotEmpty())
                 adapter.submitList(list)
