@@ -26,11 +26,14 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
-      - name: Dependencies
+      - name: Download Dependencies
         run: ./gradlew dependencies
 
       - name: Build App
         run: ./gradlew bundleRelease
+        env:
+          APP_KEYSTORE_ALIAS: ${{ secrets.APP_KEYSTORE_ALIAS }}
+          APP_KEYSTORE_PASSWORD: ${{ secrets.APP_KEYSTORE_PASSWORD }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
