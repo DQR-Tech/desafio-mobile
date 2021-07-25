@@ -63,7 +63,7 @@ class ConverterFragment : Fragment() {
             // TODO: Handle with click
         })
 
-        //setupProgressBar()
+        setupProgressBar()
         binding.lifecycleOwner = this
         return binding.root
     }
@@ -88,14 +88,10 @@ class ConverterFragment : Fragment() {
 
     private fun setupProgressBar() {
         uiViewModel.hasLoadInProgress.observe(viewLifecycleOwner, EventObserver { inProgress ->
-            if (inProgress) {
-                binding.progressIndicator.visibility = View.VISIBLE
-                binding.buttonConvert.visibility = View.GONE
-            }
-            else {
-                binding.progressIndicator.visibility = View.GONE
-                binding.buttonConvert.visibility = View.VISIBLE
-            }
+            binding.progressIndicator.visibility = if (inProgress)
+                View.VISIBLE
+            else
+                View.GONE
         })
     }
 

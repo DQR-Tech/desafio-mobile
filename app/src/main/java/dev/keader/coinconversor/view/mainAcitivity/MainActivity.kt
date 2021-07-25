@@ -31,8 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         // Update network data
         // TODO: Reactive it
-        uiViewModel.updateData()
-        binding.lifecycleOwner = this
+        //uiViewModel.updateData()
     }
 
     override fun onSupportNavigateUp(): Boolean {
