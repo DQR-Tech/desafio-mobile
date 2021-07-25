@@ -23,14 +23,11 @@ jobs:
       - name: Descrypt AppKey
         run: gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.DECRIPT_PASSWORD }}" --output keadertracker.jks keadertracker.jks.gpg
 
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
-
       - name: Download Dependencies
         run: ./gradlew dependencies
 
-      - name: Run Tests
-          run: ./gradlew check
+      - name: Execute tests
+        run: ./gradlew check
 
       - name: Build App
         run: ./gradlew bundleRelease
