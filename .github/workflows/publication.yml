@@ -1,4 +1,4 @@
-name: Android Publisher CI
+name: Android Workflow CI
 
 on:
   push:

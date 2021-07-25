@@ -1,6 +1,8 @@
 # CoinConverter
 ![Preview-Screens](https://github.com/Keader/desafio-mobile/blob/main/Screenshot/Print.png)
 
+[![Android Workflow CI](https://github.com/Keader/desafio-mobile/actions/workflows/publication.yml/badge.svg)](https://github.com/Keader/desafio-mobile/actions/workflows/publication.yml)
+
 ### Qual a função do aplicativo?
 Converter moedas baseado nos dados fornecidos pelo site [CurrencyLayer](https://currencylayer.com/).  
 Além de listar as moedas, obtendo informações sobre os códigos e seus nomes.
@@ -21,4 +23,5 @@ Dentre as bibliotecas pode-se destacar:
 - [Room](https://developer.android.com/jetpack/androidx/releases/room) banco de dados local do aplicativo.
 - [Datastore](https://developer.android.com/topic/libraries/architecture/datastore) como acesso rápido a user settings (substituindo o SharedPreferences).
 - [Truth](https://truth.dev/) para realizar asserts nos testes, mais legíveis ao ser humano.
+
 Para o CI, foi utilizado o Github Workflow (Actions), sua documentação está disponível [aqui](https://github.com/features/actions).
