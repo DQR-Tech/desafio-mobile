@@ -1,19 +1,18 @@
 package dev.keader.coinconversor.view.currencies
 
-import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import dev.keader.coinconversor.R
 import dev.keader.coinconversor.databinding.FragmentCurrenciesBinding
+import dev.keader.coinconversor.model.closeKeyboard
 import dev.keader.coinconversor.model.distinctUntilChanged
 import dev.keader.coinconversor.model.removeOldEvents
 import dev.keader.coinconversor.view.adapters.CurrencyAdapter
@@ -68,16 +67,11 @@ class CurrenciesFragment : Fragment(){
     }
 
     private fun handleWithSearchedCurrencies(search: String) {
-        hideKeyBoard()
+        binding.root.closeKeyboard()
         if (binding.radioButtonOrderByCode.isChecked)
             currenciesViewModel.getSearchElementsByCode(search)
         else
             currenciesViewModel.getSearchElementsByName(search)
-    }
-
-    private fun hideKeyBoard() {
-        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
-        imm?.hideSoftInputFromWindow(binding.root.windowToken, 0)
     }
 
     private fun handleWithListVisibility(isEmpty: Boolean) {

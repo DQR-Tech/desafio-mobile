@@ -1,6 +1,12 @@
 package dev.keader.coinconversor.model
 
+import android.app.Activity
 import android.os.Handler
+import android.view.View
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.Transformations
@@ -28,4 +34,19 @@ fun <T> LiveData<T>.distinctUntilChanged(): LiveData<T> {
 
 fun Handler.removeOldEvents() {
     removeCallbacksAndMessages(null)
+}
+
+fun Activity.windowInsetsControllerCompat(view: View): WindowInsetsControllerCompat? {
+    return WindowCompat.getInsetsController(window, view)
+}
+
+val View.windowInsetsControllerCompat: WindowInsetsControllerCompat?
+    get() = ViewCompat.getWindowInsetsController(this)
+
+fun View.closeKeyboard() {
+    windowInsetsControllerCompat?.hide(WindowInsetsCompat.Type.ime())
+}
+
+fun View.openKeyboard() {
+    windowInsetsControllerCompat?.show(WindowInsetsCompat.Type.ime())
 }
