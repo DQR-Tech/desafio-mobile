@@ -37,7 +37,7 @@ jobs:
           APP_KEYSTORE_PASSWORD: ${{ secrets.APP_KEYSTORE_PASSWORD }}
 
       - name: Upload result for job
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: App Bundle
           path: app/build/outputs/bundle/release/app-release.aab
