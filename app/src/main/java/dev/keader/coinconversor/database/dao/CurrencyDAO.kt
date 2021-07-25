@@ -1,6 +1,5 @@
 package dev.keader.coinconversor.database.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import dev.keader.coinconversor.database.model.Currency
 
@@ -13,17 +12,17 @@ interface CurrencyDAO {
     suspend fun insert(currencies: List<Currency>)
 
     @Query("SELECT * FROM Currency ORDER BY name ASC")
-    fun getAllCurrenciesOrderByName() : LiveData<List<Currency>>
+    fun getAllCurrenciesOrderByName() : List<Currency>
 
     @Query("SELECT * FROM Currency ORDER BY code ASC")
-    fun getAllCurrenciesOrderByCode() : LiveData<List<Currency>>
+    fun getAllCurrenciesOrderByCode() : List<Currency>
 
     // || in SQL = String concat
     @Query("SELECT * FROM Currency WHERE (code LIKE '%' || :search || '%') OR (name LIKE '%' || :search || '%') ORDER BY name ASC")
-    fun getCurrenciesBySearchOrderByName(search: String) : LiveData<List<Currency>>
+    fun getCurrenciesBySearchOrderByName(search: String) : List<Currency>
 
     @Query("SELECT * FROM Currency WHERE (code LIKE '%' || :search || '%') OR (name LIKE '%' || :search || '%') ORDER BY code ASC")
-    fun getCurrenciesBySearchOrderByCode(search: String) : LiveData<List<Currency>>
+    fun getCurrenciesBySearchOrderByCode(search: String) : List<Currency>
 
     @Query("DELETE FROM Currency")
     suspend fun clearCurrencies()
@@ -33,4 +32,7 @@ interface CurrencyDAO {
         clearCurrencies()
         insert(currencies)
     }
+
+    @Query("SELECT count(id) FROM Currency")
+    suspend fun getCount() : Long
 }

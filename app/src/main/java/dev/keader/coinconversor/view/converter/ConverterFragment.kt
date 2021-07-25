@@ -9,13 +9,17 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import dev.keader.coinconversor.R
 import dev.keader.coinconversor.database.model.Exchange
 import dev.keader.coinconversor.databinding.FragmentConverterBinding
 import dev.keader.coinconversor.model.EventObserver
+import dev.keader.coinconversor.view.mainAcitivity.MainActivity
 import dev.keader.coinconversor.view.mainAcitivity.UIViewModel
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ConverterFragment : Fragment() {
@@ -31,12 +35,22 @@ class ConverterFragment : Fragment() {
         binding.convertViewModel = converterViewModel
 
         converterViewModel.exchanges.observe(viewLifecycleOwner, { list ->
-            val isEmpty = list.isEmpty()
-            handleWithEmptyData(isEmpty)
-            if (!isEmpty) {
+            if (list.isNotEmpty()) {
                 setupSpinners(list)
+                handleWithEmptyData(false)
                 // TODO: Handle with model
             }
+        })
+
+        uiViewModel.onUpdateDataResponse.observe(viewLifecycleOwner, EventObserver { success ->
+            if (!success) {
+                converterViewModel.checkIfNeedShowError()
+                getSnackBarInstance(getString(R.string.connection_error)).show()
+            }
+        })
+
+        converterViewModel.showError.observe(viewLifecycleOwner, EventObserver { show ->
+            handleWithEmptyData(show)
         })
 
         converterViewModel.eventListClick.observe(viewLifecycleOwner, EventObserver {
@@ -52,12 +66,18 @@ class ConverterFragment : Fragment() {
         })
 
         setupProgressBar()
-        binding.lifecycleOwner = this
         return binding.root
     }
 
-    private fun handleWithEmptyData(isEmpty: Boolean) {
-        if (isEmpty) {
+    private fun getSnackBarInstance(text: String, duration: Int = Snackbar.LENGTH_LONG) : Snackbar {
+        val activity = requireActivity()
+        if (activity is MainActivity)
+            return activity.getSnackBarInstance(text, duration)
+        return Snackbar.make(binding.root, text, duration)
+    }
+
+    private fun handleWithEmptyData(showError: Boolean) {
+        if (showError) {
             binding.groupError.visibility = View.VISIBLE
             binding.groupNormal.visibility = View.GONE
         }
@@ -68,36 +88,32 @@ class ConverterFragment : Fragment() {
     }
 
     private fun setupProgressBar() {
-        // TODO: Doing so much stuffs into main thread :/
         uiViewModel.hasLoadInProgress.observe(viewLifecycleOwner, { inProgress ->
             if (inProgress) {
                 binding.progressIndicator.visibility = View.VISIBLE
-                // If group normal is invisible, then button is already invisible
-                if (binding.groupNormal.visibility == View.VISIBLE) {
-                    binding.buttonConvert.visibility = View.GONE
-                }
+                binding.buttonConvert.visibility = View.GONE
             }
             else {
                 binding.progressIndicator.visibility = View.GONE
-                if (binding.groupNormal.visibility == View.VISIBLE) {
-                    binding.buttonConvert.visibility = View.VISIBLE
-                }
+                binding.buttonConvert.visibility = View.VISIBLE
             }
         })
     }
 
     private fun setupSpinners(exchanges: List<Exchange>) {
-        val context = requireContext()
-        val adapterList = exchanges.map { it.code }
-        val adapter = ArrayAdapter(context, android.R.layout.simple_list_item_1, adapterList)
-        binding.spinnerInputOrigin.setAdapter(adapter)
-        binding.spinnerInputDestination.setAdapter(adapter)
-        // Set default value
-        if (adapterList.contains("USD") && adapterList.contains("BRL")) {
-            if (converterViewModel.originalCoin.value?.isEmpty() == true)
-                converterViewModel.originalCoin.value = "USD"
-            if (converterViewModel.destinationCoin.value?.isEmpty() == true)
-                converterViewModel.destinationCoin.value = "BRL"
+        converterViewModel.viewModelScope.launch {
+            val context = requireContext()
+            val adapterList = exchanges.map { it.code }
+            val adapter = ArrayAdapter(context, android.R.layout.simple_list_item_1, adapterList)
+            binding.spinnerInputOrigin.setAdapter(adapter)
+            binding.spinnerInputDestination.setAdapter(adapter)
+            // Set default value
+            if (adapterList.contains("USD") && adapterList.contains("BRL")) {
+                if (converterViewModel.originalCoin.value?.isEmpty() == true)
+                    converterViewModel.originalCoin.value = "USD"
+                if (converterViewModel.destinationCoin.value?.isEmpty() == true)
+                    converterViewModel.destinationCoin.value = "BRL"
+            }
         }
     }
 }

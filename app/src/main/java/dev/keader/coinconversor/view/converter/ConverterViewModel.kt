@@ -1,17 +1,17 @@
 package dev.keader.coinconversor.view.converter
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.keader.coinconversor.model.Event
 import dev.keader.coinconversor.model.combineWith
 import dev.keader.coinconversor.repository.CoinConverterRepository
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ConverterViewModel @Inject constructor(repository: CoinConverterRepository): ViewModel() {
+class ConverterViewModel @Inject constructor(
+    private val repository: CoinConverterRepository
+): ViewModel() {
 
     val exchanges = repository.getAllExchanges()
 
@@ -45,6 +45,10 @@ class ConverterViewModel @Inject constructor(repository: CoinConverterRepository
     val eventRetryClick: LiveData<Event<Unit>>
         get() = _eventRetryClick
 
+    private val _showError = MutableLiveData<Event<Boolean>>()
+    val showError: LiveData<Event<Boolean>>
+        get() = _showError
+
     private fun validateInput(input: String) : Boolean {
         return input.isNotEmpty()
     }
@@ -59,5 +63,12 @@ class ConverterViewModel @Inject constructor(repository: CoinConverterRepository
 
     fun onRetryButtonClick() {
         _eventRetryClick.value = Event(Unit)
+    }
+
+    fun checkIfNeedShowError() {
+        viewModelScope.launch {
+            val size = repository.getCurrenciesCount()
+            _showError.value = Event(size == 0L)
+        }
     }
 }

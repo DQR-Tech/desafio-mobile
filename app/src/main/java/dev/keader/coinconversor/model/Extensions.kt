@@ -1,5 +1,6 @@
 package dev.keader.coinconversor.model
 
+import android.os.Handler
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 
@@ -18,4 +19,8 @@ fun <T, K, Z, R> LiveData<T>.combineWith(
         result.value = block(this.value, liveData1.value, liveData2.value)
     }
     return result
+}
+
+fun Handler.removeOldEvents() {
+    removeCallbacksAndMessages(null)
 }

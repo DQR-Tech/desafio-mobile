@@ -12,7 +12,6 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import dev.keader.coinconversor.R
 import dev.keader.coinconversor.databinding.ActivityMainBinding
-import dev.keader.coinconversor.model.EventObserver
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -29,11 +28,6 @@ class MainActivity : AppCompatActivity() {
         binding.root.doOnLayout {
             NavigationUI.setupActionBarWithNavController(this, navController)
         }
-
-        uiViewModel.onUpdateDataResponse.observe(this, EventObserver { success ->
-            if (!success)
-                getSnackBarInstance(getString(R.string.connection_error)).show()
-        })
 
         // Update network data
         // TODO: Reactive it

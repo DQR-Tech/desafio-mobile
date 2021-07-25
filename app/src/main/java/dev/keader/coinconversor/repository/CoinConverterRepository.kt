@@ -53,13 +53,23 @@ class CoinConverterRepository @Inject constructor(
 
     fun getAllExchanges() = exchangeDAO.getAllExchanges()
 
-    fun getAllCurrenciesOrderByName() = currencyDAO.getAllCurrenciesOrderByName()
+    suspend fun getAllCurrenciesOrderByName() = withContext(Dispatchers.IO) {
+        currencyDAO.getAllCurrenciesOrderByName()
+    }
 
-    fun getAllCurrenciesOrderByCode() = currencyDAO.getAllCurrenciesOrderByCode()
+    suspend fun getAllCurrenciesOrderByCode() = withContext(Dispatchers.IO) {
+        currencyDAO.getAllCurrenciesOrderByCode()
+    }
 
-    fun getCurrenciesBySearchOrderByName(search: String) =
+    suspend fun getCurrenciesBySearchOrderByName(search: String) = withContext(Dispatchers.IO) {
         currencyDAO.getCurrenciesBySearchOrderByName(search)
+    }
 
-    fun getCurrenciesBySearchOrderByCode(search: String) =
+    suspend fun getCurrenciesBySearchOrderByCode(search: String) = withContext(Dispatchers.IO) {
         currencyDAO.getCurrenciesBySearchOrderByCode(search)
+    }
+
+    suspend fun getCurrenciesCount() = withContext(Dispatchers.IO) {
+        currencyDAO.getCount()
+    }
 }

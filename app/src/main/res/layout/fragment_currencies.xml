@@ -4,7 +4,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
+        <variable
+            name="currenciesViewModel"
+            type="dev.keader.coinconversor.view.currencies.CurrenciesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,6 +40,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@={currenciesViewModel.search}"
                 android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -47,23 +50,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:checkedButton="@id/radio_button_order_by_name"
+            android:checkedButton="@id/radio_button_order_by_code"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/input_search">
 
             <RadioButton
-                android:id="@+id/radio_button_order_by_name"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/order_by_name" />
-
-            <RadioButton
                 android:id="@+id/radio_button_order_by_code"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/order_by_code" />
+
+            <RadioButton
+                android:id="@+id/radio_button_order_by_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/order_by_name" />
         </RadioGroup>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -72,7 +75,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
             android:clipToPadding="false"
-            android:paddingBottom="150dp"
+            android:paddingBottom="20dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
