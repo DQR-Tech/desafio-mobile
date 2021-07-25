@@ -30,6 +30,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:hint="@string/search"
             app:layout_constraintEnd_toEndOf="parent"
@@ -40,8 +41,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={currenciesViewModel.search}"
-                android:inputType="text" />
+                android:inputType="text"
+                android:text="@={currenciesViewModel.search}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

@@ -9,7 +9,11 @@
         android:label="Conversor" >
         <action
             android:id="@+id/to_currenciesFragment"
-            app:destination="@id/currenciesFragment" />
+            app:destination="@id/currenciesFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/currenciesFragment"

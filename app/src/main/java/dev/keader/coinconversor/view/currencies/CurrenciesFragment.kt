@@ -1,5 +1,6 @@
 package dev.keader.coinconversor.view.currencies
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -55,8 +56,20 @@ class CurrenciesFragment : Fragment(){
                 handleWithSearchedCurrencies(currenciesViewModel.search.value!!)
         }
 
+        hideBannerInSmallScreens()
         binding.lifecycleOwner = this
         return binding.root
+    }
+
+    private fun hideBannerInSmallScreens() {
+        // Remove animation, in 720p devices :/
+        val displayMetrics = resources.displayMetrics
+        val configuration = resources.configuration
+        if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            if (displayMetrics.widthPixels < 800 && displayMetrics.heightPixels < 1300)
+                binding.icCurrenciesBanner.visibility = View.GONE
+        } else if (displayMetrics.widthPixels < 1300 && displayMetrics.heightPixels < 800)
+            binding.icCurrenciesBanner.visibility = View.GONE
     }
 
     private fun handleWithAllCurrencies() {
