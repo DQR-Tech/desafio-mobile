@@ -23,6 +23,9 @@ jobs:
       - name: Descrypt files
         run: gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.DECRIPT_PASSWORD }}" --output keadertracker.jks keadertracker.jks.gpg
 
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
       - name: Dependencies
         run: ./gradlew dependencies
 
