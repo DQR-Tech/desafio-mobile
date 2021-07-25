@@ -20,7 +20,7 @@ jobs:
         with:
           java-version: 11
 
-      - name: Descrypt files
+      - name: Descrypt AppKey
         run: gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.DECRIPT_PASSWORD }}" --output keadertracker.jks keadertracker.jks.gpg
 
       - name: Make gradlew executable
@@ -32,7 +32,7 @@ jobs:
       - name: Build App
         run: ./gradlew bundleRelease
 
-      - name: Upload result for job
+      - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: App Bundle
