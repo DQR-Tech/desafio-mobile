@@ -16,8 +16,8 @@ class UIViewModel @Inject constructor(
     private val repository: CoinConverterRepository
 ) : ViewModel() {
 
-    private val _hasLoadInProgress = MutableLiveData(false)
-    val hasLoadInProgress: LiveData<Boolean>
+    private val _hasLoadInProgress = MutableLiveData<Event<Boolean>>()
+    val hasLoadInProgress: LiveData<Event<Boolean>>
         get() = _hasLoadInProgress
 
     private val _onUpdateDataResponse = MutableLiveData<Event<Boolean>>()
@@ -26,11 +26,11 @@ class UIViewModel @Inject constructor(
 
     fun updateData() {
         Timber.d("Updating data...")
-        _hasLoadInProgress.value = true
+        _hasLoadInProgress.value = Event(true)
         viewModelScope.launch {
             val success = repository.updatedDataFromNetwork()
             _onUpdateDataResponse.value = Event(success)
-            _hasLoadInProgress.value = false
+            _hasLoadInProgress.value = Event(false)
         }
     }
 }

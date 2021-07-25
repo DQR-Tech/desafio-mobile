@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,7 +18,6 @@ import dev.keader.coinconversor.databinding.FragmentConverterBinding
 import dev.keader.coinconversor.model.EventObserver
 import dev.keader.coinconversor.view.mainAcitivity.MainActivity
 import dev.keader.coinconversor.view.mainAcitivity.UIViewModel
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ConverterFragment : Fragment() {
@@ -65,7 +63,8 @@ class ConverterFragment : Fragment() {
             // TODO: Handle with click
         })
 
-        setupProgressBar()
+        //setupProgressBar()
+        binding.lifecycleOwner = this
         return binding.root
     }
 
@@ -88,7 +87,7 @@ class ConverterFragment : Fragment() {
     }
 
     private fun setupProgressBar() {
-        uiViewModel.hasLoadInProgress.observe(viewLifecycleOwner, { inProgress ->
+        uiViewModel.hasLoadInProgress.observe(viewLifecycleOwner, EventObserver { inProgress ->
             if (inProgress) {
                 binding.progressIndicator.visibility = View.VISIBLE
                 binding.buttonConvert.visibility = View.GONE
@@ -101,19 +100,17 @@ class ConverterFragment : Fragment() {
     }
 
     private fun setupSpinners(exchanges: List<Exchange>) {
-        converterViewModel.viewModelScope.launch {
-            val context = requireContext()
-            val adapterList = exchanges.map { it.code }
-            val adapter = ArrayAdapter(context, android.R.layout.simple_list_item_1, adapterList)
-            binding.spinnerInputOrigin.setAdapter(adapter)
-            binding.spinnerInputDestination.setAdapter(adapter)
-            // Set default value
-            if (adapterList.contains("USD") && adapterList.contains("BRL")) {
-                if (converterViewModel.originalCoin.value?.isEmpty() == true)
-                    converterViewModel.originalCoin.value = "USD"
-                if (converterViewModel.destinationCoin.value?.isEmpty() == true)
-                    converterViewModel.destinationCoin.value = "BRL"
-            }
+        val context = requireContext()
+        val adapterList = exchanges.map { it.code }
+        val adapter = ArrayAdapter(context, android.R.layout.simple_list_item_1, adapterList)
+        binding.spinnerInputOrigin.setAdapter(adapter)
+        binding.spinnerInputDestination.setAdapter(adapter)
+        // Set default value
+        if (adapterList.contains("USD") && adapterList.contains("BRL")) {
+            if (converterViewModel.originalCoin.value?.isEmpty() == true)
+                converterViewModel.originalCoin.value = "USD"
+            if (converterViewModel.destinationCoin.value?.isEmpty() == true)
+                converterViewModel.destinationCoin.value = "BRL"
         }
     }
 }

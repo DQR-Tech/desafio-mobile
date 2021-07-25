@@ -1,6 +1,9 @@
 package dev.keader.coinconversor.database.dao
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import dev.keader.coinconversor.database.model.Currency
 
 @Dao
@@ -26,12 +29,6 @@ interface CurrencyDAO {
 
     @Query("DELETE FROM Currency")
     suspend fun clearCurrencies()
-
-    @Transaction
-    suspend fun clearAndInsert(currencies: List<Currency>) {
-        clearCurrencies()
-        insert(currencies)
-    }
 
     @Query("SELECT count(id) FROM Currency")
     suspend fun getCount() : Long

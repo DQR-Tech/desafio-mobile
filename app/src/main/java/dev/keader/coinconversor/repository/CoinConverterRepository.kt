@@ -1,5 +1,7 @@
 package dev.keader.coinconversor.repository
 
+import androidx.room.withTransaction
+import dev.keader.coinconversor.database.CoinConverterDatabase
 import dev.keader.coinconversor.database.dao.CurrencyDAO
 import dev.keader.coinconversor.database.dao.ExchangeDAO
 import dev.keader.coinconversor.database.model.DatabaseUtil
@@ -13,6 +15,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class CoinConverterRepository @Inject constructor(
+    private val database: CoinConverterDatabase,
     private val currencyDAO: CurrencyDAO,
     private val exchangeDAO: ExchangeDAO,
     private val currencyLayerService: CurrencyLayerService
@@ -23,7 +26,7 @@ class CoinConverterRepository @Inject constructor(
             try {
                 val exchangeDTO = currencyLayerService.getExchanges()
                 // Yes folks, free api return success = false if we do it too fast
-                delay(2000L)
+                delay(2000)
                 val currencyDTO = currencyLayerService.getCurrencies()
                 if (!validateDTOs(exchangeDTO, currencyDTO)) {
                     Timber.e("DTO with invalid data")
@@ -32,8 +35,14 @@ class CoinConverterRepository @Inject constructor(
 
                 val exchanges = DatabaseUtil.convertExchangeDTO(exchangeDTO)
                 val currencies = DatabaseUtil.convertCurrencyDTO(currencyDTO)
-                exchangeDAO.clearAndInsert(exchanges)
-                currencyDAO.clearAndInsert(currencies)
+
+                database.withTransaction {
+                    exchangeDAO.clearExchanges()
+                    exchangeDAO.insert(exchanges)
+                    currencyDAO.clearCurrencies()
+                    currencyDAO.insert(currencies)
+                }
+
             } catch (ex: Exception) {
                 Timber.e(ex)
                 return@withContext false
@@ -43,7 +52,7 @@ class CoinConverterRepository @Inject constructor(
         }
     }
 
-    private fun validateDTOs(exchangeDTO: ExchangeDTO, currencyDTO: CurrencyDTO) : Boolean {
+    private fun validateDTOs(exchangeDTO: ExchangeDTO, currencyDTO: CurrencyDTO): Boolean {
         if (!exchangeDTO.success || !currencyDTO.success)
             return false
         if (exchangeDTO.quotes.isEmpty() || currencyDTO.currencies.isEmpty())

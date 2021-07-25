@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         // Update network data
         // TODO: Reactive it
-        //uiViewModel.updateData()
+        uiViewModel.updateData()
         binding.lifecycleOwner = this
     }
 
