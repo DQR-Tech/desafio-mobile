@@ -6,20 +6,22 @@ import java.math.RoundingMode
 
 class CurrencyConverter {
 
-    private val exchangeMap = mutableMapOf<String, Double>()
+    private val _exchangeMap = mutableMapOf<String, Double>()
+    val exchanges
+        get() = _exchangeMap
 
     fun updateCurrencyMap(newMap: Map<String, Double>) {
-        exchangeMap.clear()
-        exchangeMap.putAll(newMap)
+        _exchangeMap.clear()
+        _exchangeMap.putAll(newMap)
     }
 
     fun updateCurrencyMap(exchangeList: List<Exchange>) {
         if (exchangeList.isEmpty())
             return
 
-        exchangeMap.clear()
+        _exchangeMap.clear()
         exchangeList.forEach {
-            exchangeMap[it.code] = it.value
+            _exchangeMap[it.code] = it.value
         }
     }
 
@@ -27,9 +29,9 @@ class CurrencyConverter {
         // Sanity checks
         // It's called by Convert button, and button has validation, so exchangeMap should be never
         // at this point.
-        if (exchangeMap.isEmpty())
+        if (_exchangeMap.isEmpty())
             return ERROR_VALUE
-        if (!exchangeMap.containsKey(origin) || !exchangeMap.containsKey(destination))
+        if (!_exchangeMap.containsKey(origin) || !_exchangeMap.containsKey(destination))
             return ERROR_VALUE
         if (origin == destination || value == 0.0)
             return value
@@ -49,12 +51,12 @@ class CurrencyConverter {
     }
 
     private fun convertToDestination(destination: String, value: Double): Double {
-        val exchangeValue = exchangeMap.getValue(destination)
+        val exchangeValue = _exchangeMap.getValue(destination)
         return value * exchangeValue
     }
 
     private fun convertToUSD(currency: String, value: Double) : Double {
-        val exchangeValue = exchangeMap.getValue(currency)
+        val exchangeValue = _exchangeMap.getValue(currency)
         return value / exchangeValue
     }
 
