@@ -3,6 +3,7 @@ package dev.keader.coinconversor.view.converter
 import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.keader.coinconversor.model.Event
+import dev.keader.coinconversor.model.PreferencesManager
 import dev.keader.coinconversor.model.combineWith
 import dev.keader.coinconversor.repository.CoinConverterRepository
 import kotlinx.coroutines.launch
@@ -10,7 +11,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ConverterViewModel @Inject constructor(
-    private val repository: CoinConverterRepository
+    private val repository: CoinConverterRepository,
+    private val preferencesManager: PreferencesManager
 ): ViewModel() {
 
     val exchanges = repository.getAllExchanges()
@@ -48,6 +50,14 @@ class ConverterViewModel @Inject constructor(
     private val _showError = MutableLiveData<Event<Boolean>>()
     val showError: LiveData<Event<Boolean>>
         get() = _showError
+
+    val updateDate = preferencesManager.dateStringFlow.asLiveData()
+
+    fun saveUpdateDate(date : String) {
+        viewModelScope.launch {
+            preferencesManager.saveLastUpdateDate(date)
+        }
+    }
 
     private fun validateInput(input: String) : Boolean {
         return input.isNotEmpty()

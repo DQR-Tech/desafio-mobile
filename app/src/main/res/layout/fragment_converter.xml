@@ -114,7 +114,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintGuide_begin="202dp" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintGuide_begin="194dp"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/label_conversor"
@@ -234,27 +236,40 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
                     android:enabled="@{convertViewModel.buttonEnabled}"
                     android:onClick="@{() -> convertViewModel.onConvertButtonClick()}"
                     android:text="@string/convert"
                     android:textColor="@color/secondaryTextColor"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txt_input_destination" />
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/ic_update"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginBottom="8dp"
                     android:onClick="@{() -> convertViewModel.onRetryButtonClick()}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:srcCompat="@drawable/ic_baseline_refresh_24"
                     app:tint="@color/primaryColor" />
+
+                <TextView
+                    android:id="@+id/label_update"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@{convertViewModel.updateDate}"
+                    tools:text="Atualizado em: 25/07/2021 13:05"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/button_convert" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>

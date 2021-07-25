@@ -19,4 +19,5 @@
     <string name="label_currency_code">Código:</string>
     <string name="convert_error">Houve um erro na conversão das moedas. Estamos atualizando a base de dados, tente novamente em instantes.</string>
     <string name="update_success">Dados atualizados com sucesso.</string>
+    <string name="last_update">Atualizado em: %1$s</string>
 </resources>

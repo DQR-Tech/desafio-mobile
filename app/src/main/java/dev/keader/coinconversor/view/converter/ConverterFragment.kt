@@ -21,6 +21,8 @@ import dev.keader.coinconversor.model.EventObserver
 import dev.keader.coinconversor.view.mainAcitivity.MainActivity
 import dev.keader.coinconversor.view.mainAcitivity.UIViewModel
 import timber.log.Timber
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 @AndroidEntryPoint
 class ConverterFragment : Fragment() {
@@ -47,6 +49,9 @@ class ConverterFragment : Fragment() {
         uiViewModel.onUpdateDataResponse.observe(viewLifecycleOwner, EventObserver { success ->
             if (success) {
                 getSnackBarInstance(getString(R.string.update_success), Snackbar.LENGTH_SHORT).show()
+                val currentTime = LocalDateTime.now().format(FORMATTER)
+                val dateFormatted = getString(R.string.last_update, currentTime)
+                converterViewModel.saveUpdateDate(dateFormatted)
             } else {
                 converterViewModel.checkIfNeedShowError()
                 getSnackBarInstance(getString(R.string.connection_error)).show()
@@ -133,5 +138,6 @@ class ConverterFragment : Fragment() {
     companion object {
         private const val USD = "USD"
         private const val BRL = "BRL"
+        private val FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")
     }
 }
