@@ -15,17 +15,17 @@ interface CurrencyDAO {
     suspend fun insert(currencies: List<Currency>)
 
     @Query("SELECT * FROM Currency ORDER BY name ASC")
-    fun getAllCurrenciesOrderByName() : List<Currency>
+    suspend fun getAllCurrenciesOrderByName() : List<Currency>
 
     @Query("SELECT * FROM Currency ORDER BY code ASC")
-    fun getAllCurrenciesOrderByCode() : List<Currency>
+    suspend fun getAllCurrenciesOrderByCode() : List<Currency>
 
     // || in SQL = String concat
     @Query("SELECT * FROM Currency WHERE (code LIKE '%' || :search || '%') OR (name LIKE '%' || :search || '%') ORDER BY name ASC")
-    fun getCurrenciesBySearchOrderByName(search: String) : List<Currency>
+    suspend fun getCurrenciesBySearchOrderByName(search: String) : List<Currency>
 
     @Query("SELECT * FROM Currency WHERE (code LIKE '%' || :search || '%') OR (name LIKE '%' || :search || '%') ORDER BY code ASC")
-    fun getCurrenciesBySearchOrderByCode(search: String) : List<Currency>
+    suspend fun getCurrenciesBySearchOrderByCode(search: String) : List<Currency>
 
     @Query("DELETE FROM Currency")
     suspend fun clearCurrencies()
