@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/converterFragment">
+    <fragment
+        android:id="@+id/converterFragment"
+        android:name="dev.keader.coinconversor.view.converter.ConverterFragment"
+        android:label="Conversor" >
+        <action
+            android:id="@+id/to_currenciesFragment"
+            app:destination="@id/currenciesFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/currenciesFragment"
+        android:name="dev.keader.coinconversor.view.currencies.CurrenciesFragment"
+        android:label="Lista" />
+</navigation>
